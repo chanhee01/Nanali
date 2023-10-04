@@ -26,7 +26,7 @@ public class Member {
 
     private int age;
 
-    private Style style;
+    private String style;
 
     @OneToMany(mappedBy = "member")
     private List<LikeGarment> garmentList;
@@ -36,4 +36,17 @@ public class Member {
 
     @OneToOne(mappedBy = "member")
     private MemberImg memberImg;
+
+    public Member() {
+    }
+
+    public Member(String loginId, String password, String nickname, String email, boolean sex, int age, String style) {
+        this.loginId = loginId;
+        this.password = password;
+        this.nickname = nickname;
+        this.email = email;
+        this.sex = sex;
+        this.age = age;
+        this.style = style;
+    }
 }
