@@ -3,50 +3,36 @@ package Nanali.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class WeatherService {
 
-    @Value("${weatherApi.serviceKey}")
-    private String serviceKey;
+    public ResponseEntity<Map<String, Map<String, Object>>> weather(LocalDateTime weatherTime) throws IOException {
 
-    public List<Double> weather() throws IOException {
+        String today = weatherTime.toString().concat("T");
+        today = today.substring(0, today.indexOf("T"));
+        System.out.println("today = " + today);
 
-        String today = String.valueOf(LocalDateTime.now());
-
-        // LocalDateTime 형식으로 파싱
-        LocalDateTime dateTime = LocalDateTime.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS"));
-
-        // 날짜와 시간을 원하는 형식으로 출력
-        String formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        String formattedTime = dateTime.format(DateTimeFormatter.ofPattern("HHmm"));
-
-
-        StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"); // HTTPS 프로토콜 사용
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + URLEncoder.encode(serviceKey, "UTF-8")); // Service Key
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); // 한 페이지 결과 수
-        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); // 페이지 번호
-        urlBuilder.append("&" + URLEncoder.encode("base_date", "UTF-8") + "=" + URLEncoder.encode(formattedDate, "UTF-8")); // 기준 날짜
-        urlBuilder.append("&" + URLEncoder.encode("base_time", "UTF-8") + "=" + URLEncoder.encode(formattedTime, "UTF-8")); // 기준 시간
-        urlBuilder.append("&" + URLEncoder.encode("nx", "UTF-8") + "=" + URLEncoder.encode("54", "UTF-8")); // 예보지점의 X 좌표값
-        urlBuilder.append("&" + URLEncoder.encode("ny", "UTF-8") + "=" + URLEncoder.encode("124", "UTF-8")); // 예보지점의 Y 좌표값
-        urlBuilder.append("&" + URLEncoder.encode("dataType", "UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8")); // 요청 자료 형식
+        StringBuilder urlBuilder = new StringBuilder("https://api.open-meteo.com/v1/forecast"); // HTTPS 프로토콜 사용
+        urlBuilder.append("?" + URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode("37.4526", "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode("126.6517", "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("hourly", "UTF-8") + "=" + URLEncoder.encode("temperature_2m,precipitation,uv_index", "UTF-8"));
 
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -72,39 +58,49 @@ public class WeatherService {
         String data = sb.toString();
         System.out.println("API 응답 데이터: " + data);
 
-        Double temp = null;
-        Double humid = null;
-        Double rainAmount = null;
+        try {
+            JSONObject jsonResponse = new JSONObject(data);
 
-        JSONObject jObject = new JSONObject(data);
-        JSONObject response = jObject.getJSONObject("response");
-        JSONObject body = response.getJSONObject("body");
-        JSONObject items = body.getJSONObject("items");
-        JSONArray jArray = items.getJSONArray("item");
+            JSONObject hourlyTimes = jsonResponse.getJSONObject("hourly");
 
-        for(int i = 0; i < jArray.length(); i++) {
-            JSONObject obj = jArray.getJSONObject(i);
-            String category = obj.getString("category");
-            double obsrValue = obj.getDouble("obsrValue");
+            JSONArray timeData = hourlyTimes.getJSONArray("time");
+            JSONArray temperatureData = hourlyTimes.getJSONArray("temperature_2m");
+            JSONArray precipitationData = hourlyTimes.getJSONArray("precipitation");
+            JSONArray uvIndexData = hourlyTimes.getJSONArray("uv_index");
 
-            switch (category) {
-                case "T1H":
-                    temp = obsrValue;
-                    break;
-                case "RN1":
-                    rainAmount = obsrValue;
-                    break;
-                case "REH":
-                    humid = obsrValue;
-                    break;
+            // 날짜별 데이터를 매핑하기 위한 Map
+            TreeMap<String, Map<String, Object>> weatherDataByDate = new TreeMap<>();
+
+            for (int i = 0; i < timeData.length(); i++) {
+                // 이전 코드 생략
+
+                String time = timeData.getString(i);
+                double temperature = temperatureData.getDouble(i);
+                double precipitation = precipitationData.getDouble(i);
+                double uvIndex = uvIndexData.getDouble(i);
+
+                // 날짜 정보 추출
+                String date = time.replace("T", " ");
+
+                // 해당 날짜에 대한 데이터 매핑
+                Map<String, Object> weatherData = new HashMap<>();
+                weatherData.put("temperature", temperature);
+                weatherData.put("precipitation", precipitation);
+                weatherData.put("uv_index", uvIndex);
+
+
+                if(date.contains(today)) {
+                    weatherDataByDate.put(date, weatherData);
+                }
             }
+
+            List<Map.Entry<String, Map<String, Object>>> sortedList = new ArrayList<>(weatherDataByDate.entrySet());
+
+            // ResponseEntity로 매핑된 데이터 반환
+            return ResponseEntity.ok(weatherDataByDate);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
-        List<Double> values = new ArrayList<>();
-        values.add(temp);
-        values.add(rainAmount);
-        values.add(humid);
-
-        return values;
     }
 }
