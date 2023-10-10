@@ -17,6 +17,8 @@ public class LikeGarment {
 
     private String imgUrl;
 
+    private Category category;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     @JsonIgnore
