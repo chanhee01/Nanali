@@ -1,4 +1,4 @@
-package Nanali.domain.outfit;
+package Nanali.domain.LikeClothes;
 
 import Nanali.domain.Member.Member;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class LikeGarment {
+public class LikeOutfit {
 
     @Id
     @GeneratedValue
@@ -16,8 +16,6 @@ public class LikeGarment {
     private String imgName;
 
     private String imgUrl;
-
-    private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
