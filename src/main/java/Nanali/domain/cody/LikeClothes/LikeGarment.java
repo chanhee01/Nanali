@@ -1,7 +1,7 @@
-package Nanali.domain.LikeClothes;
+package Nanali.domain.cody.LikeClothes;
 
-import Nanali.domain.Category;
 import Nanali.domain.Member.Member;
+import Nanali.domain.cody.cloth.Garment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,11 +14,10 @@ public class LikeGarment {
     @GeneratedValue
     private Long id;
 
-    private String imgName;
-
-    private String imgUrl;
-
-    private Category category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "garment_id")
+    @JsonIgnore
+    private Garment garment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

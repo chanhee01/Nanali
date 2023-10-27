@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Outfit {
+public class Outfit { // Outfit은 코디 사진
 
     @Id
     @GeneratedValue
@@ -22,8 +22,18 @@ public class Outfit {
 
     private String imgUrl;
 
-    private Category category;
+    private String category; // Category 타입으로 수정 필요
 
     @OneToMany(mappedBy = "outfit")
     private List<LikeOutfit> outfitList;
+
+    public Outfit() {
+
+    }
+
+    public Outfit(String imgName, String imgUrl, String category) {
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+        this.category = category;
+    }
 }

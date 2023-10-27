@@ -1,7 +1,7 @@
 package Nanali.domain.Member;
 
-import Nanali.domain.outfit.LikeGarment;
-import Nanali.domain.outfit.LikeOutfit;
+import Nanali.domain.cody.LikeClothes.LikeGarment;
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -26,7 +26,7 @@ public class Member {
 
     private int age;
 
-    private String style;
+    private String style; // Style 타입으로 수정 필요
 
     @OneToMany(mappedBy = "member")
     private List<LikeGarment> garmentList;
