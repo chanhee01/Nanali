@@ -30,7 +30,6 @@ public class Garment { // Garment는 코디 안의 아이템 하나 하나를 �
     private Long rain_from;
     private Long rain_to;
 
-
     @OneToMany(mappedBy = "garment")
     private List<LikeGarment> garmentList;
 

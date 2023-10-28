@@ -1,7 +1,7 @@
 package Nanali.repository;
 
 import Nanali.domain.Member.Member;
-import Nanali.domain.outfit.LikeOutfit;
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
