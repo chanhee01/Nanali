@@ -13,6 +13,7 @@ public class GarmentService {
 
     private final GarmentRepository garmentRepository;
 
+    @Transactional
     public Long save(Garment garment) {
         Garment save = garmentRepository.save(garment);
         return save.getId();

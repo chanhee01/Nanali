@@ -17,6 +17,7 @@ public class LikeGarmentService {
 
     private final LikeGarmentRepository likeGarmentRepository;
 
+    @Transactional
     public Long save(LikeGarment likeGarment) {
         LikeGarment save = likeGarmentRepository.save(likeGarment);
         return save.getId();

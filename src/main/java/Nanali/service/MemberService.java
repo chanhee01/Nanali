@@ -13,6 +13,12 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Transactional
+    public Long save(Member member) {
+        Member savedId = memberRepository.save(member);
+        return savedId.getId();
+    }
+
     public Member findMember(Long id) {
         return memberRepository.findById(id).
             orElseThrow(() -> new IllegalArgumentException());
