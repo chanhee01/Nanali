@@ -1,9 +1,6 @@
 package Nanali.domain.cody.cloth;
 
-import Nanali.domain.Member.Style;
-import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
-import Nanali.service.GarmentService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -24,7 +21,15 @@ public class Garment { // Garment는 코디 안의 아이템 하나 하나를 �
 
     private String imgUrl;
 
-    private String style; // Style 타입으로 수정 필요
+    private String category; // Style 타입으로 수정 필요
+
+    private Long temp_from;
+    private Long temp_to;
+    private Long uv_from;
+    private Long uv_to;
+    private Long rain_from;
+    private Long rain_to;
+
 
     @OneToMany(mappedBy = "garment")
     private List<LikeGarment> garmentList;
@@ -33,9 +38,9 @@ public class Garment { // Garment는 코디 안의 아이템 하나 하나를 �
 
     }
 
-    public Garment(String imgName, String imgUrl, String style) {
+    public Garment(String imgName, String imgUrl, String category) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
-        this.style = style;
+        this.category = category;
     }
 }

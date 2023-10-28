@@ -2,10 +2,7 @@ package Nanali.domain.cody.cloth;
 
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.List;
@@ -22,7 +19,14 @@ public class Outfit { // Outfit은 코디 사진
 
     private String imgUrl;
 
-    private String category; // Category 타입으로 수정 필요
+    private String style; // Category 타입으로 수정 필요
+
+    private Long temp_from;
+    private Long temp_to;
+    private Long uv_from;
+    private Long uv_to;
+    private Long rain_from;
+    private Long rain_to;
 
     @OneToMany(mappedBy = "outfit")
     private List<LikeOutfit> outfitList;
@@ -31,9 +35,9 @@ public class Outfit { // Outfit은 코디 사진
 
     }
 
-    public Outfit(String imgName, String imgUrl, String category) {
+    public Outfit(String imgName, String imgUrl, String style) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
-        this.category = category;
+        this.style = style;
     }
 }
