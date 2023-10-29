@@ -37,9 +37,16 @@ public class Garment { // Garment는 코디 안의 아이템 하나 하나를 �
 
     }
 
-    public Garment(String imgName, String imgUrl, String category) {
+    public Garment(String imgName, String imgUrl, String category, Long temp_from, Long temp_to,
+                   Long uv_from, Long uv_to, Long rain_from, Long rain_to) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
         this.category = category;
+        this.temp_from = temp_from;
+        this.temp_to = temp_to;
+        this.uv_from = uv_from;
+        this.uv_to = uv_to;
+        this.rain_from = rain_from;
+        this.rain_to = rain_to;
     }
 }

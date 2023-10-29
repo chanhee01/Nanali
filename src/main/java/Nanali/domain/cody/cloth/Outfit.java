@@ -1,6 +1,5 @@
 package Nanali.domain.cody.cloth;
 
-import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -35,9 +34,17 @@ public class Outfit { // Outfit은 코디 사진
 
     }
 
-    public Outfit(String imgName, String imgUrl, String style) {
+    public Outfit(String imgName, String imgUrl, String style, Long temp_from, Long temp_to,
+                  Long uv_from, Long uv_to, Long rain_from, Long rain_to) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
         this.style = style;
+        this.temp_from = temp_from;
+        this.temp_to = temp_to;
+        this.uv_from = uv_from;
+        this.uv_to = uv_to;
+        this.rain_from = rain_from;
+        this.rain_to = rain_to;
     }
+
 }
