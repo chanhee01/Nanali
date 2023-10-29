@@ -62,7 +62,7 @@ public class LikeGarmentService {
     }
 
     @Transactional
-    public void changeLikeOutfit(Long id) {
+    public void changeLikeGarment(Long id) {
         LikeGarment findGarment = findOne(id);
 
         if (findGarment.getLikeStatus() == LikeStatus.LIKE) {
