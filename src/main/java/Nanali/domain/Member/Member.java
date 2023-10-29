@@ -1,5 +1,6 @@
 package Nanali.domain.Member;
 
+import Nanali.domain.BaseEntity;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Member {
+public class Member extends BaseEntity {
 
     @Id @GeneratedValue
     private Long id;
@@ -49,4 +50,14 @@ public class Member {
         this.age = age;
         this.style = style;
     }
+
+    // 연관관계 메서드
+    public void addLikeGarment(LikeGarment likeGarment) {
+        garmentList.add(likeGarment);
+    }
+
+    public void addLikeOutfit(LikeOutfit likeOutfit) {
+        outfitList.add(likeOutfit);
+    }
+
 }

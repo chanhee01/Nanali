@@ -1,5 +1,6 @@
 package Nanali.domain.cody.LikeClothes;
 
+import Nanali.domain.BaseEntity;
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.cloth.Outfit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,7 +9,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class LikeOutfit {
+public class LikeOutfit extends BaseEntity {
 
     @Id
     @GeneratedValue

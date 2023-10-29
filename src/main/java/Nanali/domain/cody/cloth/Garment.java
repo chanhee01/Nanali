@@ -1,6 +1,8 @@
 package Nanali.domain.cody.cloth;
 
+import Nanali.domain.BaseEntity;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Garment { // Garment는 코디 안의 아이템 하나 하나를 지칭
+public class Garment extends BaseEntity { // Garment는 코디 안의 아이템 하나 하나를 지칭
 
     @Id
     @GeneratedValue
@@ -48,5 +50,10 @@ public class Garment { // Garment는 코디 안의 아이템 하나 하나를 �
         this.uv_to = uv_to;
         this.rain_from = rain_from;
         this.rain_to = rain_to;
+    }
+
+    // 연관관계 메서드
+    public void addLikeGarment(LikeGarment likeGarment) {
+        garmentList.add(likeGarment);
     }
 }

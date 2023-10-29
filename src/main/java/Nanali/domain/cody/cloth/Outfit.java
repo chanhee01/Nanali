@@ -1,5 +1,6 @@
 package Nanali.domain.cody.cloth;
 
+import Nanali.domain.BaseEntity;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Outfit { // Outfit은 코디 사진
+public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     @Id
     @GeneratedValue
@@ -47,4 +48,8 @@ public class Outfit { // Outfit은 코디 사진
         this.rain_to = rain_to;
     }
 
+    // 연관관계 메서드
+    public void addLikeOutfit(LikeOutfit likeOutfit) {
+        outfitList.add(likeOutfit);
+    }
 }
