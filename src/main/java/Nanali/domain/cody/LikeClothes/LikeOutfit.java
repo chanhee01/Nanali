@@ -23,4 +23,21 @@ public class LikeOutfit {
     @JoinColumn(name = "member_id")
     @JsonIgnore
     private Member member;
+
+    @Enumerated(EnumType.STRING)
+    private LikeStatus likeStatus;
+
+    public LikeOutfit() {
+
+    }
+
+    public LikeOutfit(Member member, Outfit outfit, LikeStatus likeStatus) {
+        this.member = member;
+        this.outfit = outfit;
+        this.likeStatus = likeStatus;
+    }
+
+    public void changeLikeStatus(LikeStatus likeStatus) {
+        this.likeStatus = likeStatus;
+    }
 }
