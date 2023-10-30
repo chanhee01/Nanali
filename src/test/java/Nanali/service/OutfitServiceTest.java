@@ -1,13 +1,17 @@
 package Nanali.service;
 
 import Nanali.domain.Member.Member;
+import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
+import Nanali.dtos.weather.OutfitWeatherRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.util.Assert;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,36 +24,45 @@ class OutfitServiceTest {
     @Autowired
     OutfitService outfitService;
 
-    @DisplayName("아직 랜덤으로 하나 추출하는건 구현 X, 해당되는 garment들의 리스트만 추출")
+    @DisplayName("날씨에 해당하는 outfit 사진 랜덤으로 하나 추출")
     @Test
     public void findOutfit() {
-        Member member = new Member("loginId", "password", "nickname", "email", true, 20, "style");
+        Member member = new Member("loginId", "password", "nickname", "email", true, 20, Style.CASUAL);
         memberService.save(member);
 
-        Outfit outfit1 = new Outfit("test1", "testUrl1", "style1", 0L, 10L, 0L, 1L, 0L, 30L);
-        Outfit outfit2 = new Outfit("test2", "testUrl2", "style1", 10L, 20L, 0L, 1L, 0L, 50L);
-        Outfit outfit3 = new Outfit("test3", "testUrl3", "style2", 20L, 25L, 0L, 2L, 20L, 100L);
-        Outfit outfit4 = new Outfit("test4", "testUrl4", "style2", 15L, 20L, 0L, 3L, 70L, 100L);
-        Outfit outfit5 = new Outfit("test5", "testUrl5", "style2", 10L, 14L, 0L, 3L, 80L, 100L);
-        Outfit outfit6 = new Outfit("test6", "testUrl6", "style2", 15L, 20L, 0L, 2L, 0L, 50L);
-        Outfit outfit7 = new Outfit("test7", "testUrl7", "style2", 15L, 20L, 0L, 2L, 0L, 30L);
+        byte[] fileContent = "Test file content".getBytes();
+        MultipartFile multipartFile = new MockMultipartFile("testfile.txt", "testfile.txt", "text/plain", fileContent);
 
-        outfitService.save(outfit1);
-        outfitService.save(outfit2);
-        outfitService.save(outfit3);
-        outfitService.save(outfit4);
-        outfitService.save(outfit5);
-        outfitService.save(outfit6);
-        outfitService.save(outfit7);
+        OutfitWeatherRequest outfitWeatherRequest1 = new OutfitWeatherRequest(0L, 10L, 0L, 1L, 0L, 30L);
+        OutfitWeatherRequest outfitWeatherRequest2 = new OutfitWeatherRequest(10L, 20L, 0L, 1L, 0L, 50L);
+        OutfitWeatherRequest outfitWeatherRequest3 = new OutfitWeatherRequest(10L, 25L, 0L, 2L, 20L, 100L);
+        OutfitWeatherRequest outfitWeatherRequest4 = new OutfitWeatherRequest(10L, 20L, 0L, 3L, 70L, 100L);
+        OutfitWeatherRequest outfitWeatherRequest5 = new OutfitWeatherRequest(10L, 14L, 0L, 3L, 80L, 100L);
+        OutfitWeatherRequest outfitWeatherRequest6 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
+        OutfitWeatherRequest outfitWeatherRequest7 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 30L);
+
+        Outfit outfit1 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest1);
+        Outfit outfit2 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest2);
+        Outfit outfit3 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest3);
+        Outfit outfit4 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest4);
+        Outfit outfit5 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest5);
+        Outfit outfit6 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest6);
+        Outfit outfit7 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest7);
 
         Outfit one = outfitService.findOne(outfit1.getId());
 
         System.out.println("one" + one.getImgName());
 
-        List<Outfit> style1 = outfitService.findOutfit(10L, 1L, 20L, "style1");
+        Outfit style1 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL);
 
-        for (Outfit outfit : style1) {
-            System.out.println(outfit);
-        }
+        System.out.println(style1.getImgName());
+
+        Outfit style2 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL);
+
+        System.out.println(style2.getImgName());
+
+        Outfit style3 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL);
+
+        System.out.println(style3.getImgName());
     }
 }
