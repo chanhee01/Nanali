@@ -27,7 +27,8 @@ public class Member extends BaseEntity {
 
     private int age;
 
-    private String style; // Style 타입으로 수정 필요
+    @Enumerated(EnumType.STRING)
+    private Style style; // Style 타입으로 수정 필요
 
     @OneToMany(mappedBy = "member")
     private List<LikeGarment> garmentList;
@@ -41,7 +42,7 @@ public class Member extends BaseEntity {
     public Member() {
     }
 
-    public Member(String loginId, String password, String nickname, String email, boolean sex, int age, String style) {
+    public Member(String loginId, String password, String nickname, String email, boolean sex, int age, Style style) {
         this.loginId = loginId;
         this.password = password;
         this.nickname = nickname;
@@ -58,6 +59,18 @@ public class Member extends BaseEntity {
 
     public void addLikeOutfit(LikeOutfit likeOutfit) {
         outfitList.add(likeOutfit);
+    }
+
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void changeStyle(Style style) {
+        this.style = style;
+    }
+
+    public void changePassword(String password) {
+        this.password = password;
     }
 
 }
