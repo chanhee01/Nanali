@@ -4,6 +4,7 @@ import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
+import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,38 +40,38 @@ public class GarmentServiceTest {
         GarmentWeatherRequest garmentWeatherRequest5 = new GarmentWeatherRequest(10L, 14L, 0L, 3L, 80L, 100L);
         GarmentWeatherRequest garmentWeatherRequest6 = new GarmentWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
 
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest1);
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest2);
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest3);
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest4);
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest5);
-        garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest6);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest1);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest2);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest3);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest4);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest5);
+        garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest6);
 
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest1);
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest2);
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest3);
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest4);
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest5);
-        garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest6);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest1);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest2);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest3);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest4);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest5);
+        garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest6);
 
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest1);
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest2);
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest3);
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest4);
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest5);
-        garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest6);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest1);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest2);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest3);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest4);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest5);
+        garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest6);
 
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest1);
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest2);
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest3);
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest4);
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest5);
-        garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest6);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest1);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest2);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest3);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest4);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest5);
+        garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest6);
 
-        List<Garment> outers = garmentService.findOuters(10L, 1L, 20L);
-        List<Garment> tops = garmentService.findTops(10L, 1L, 20L);
-        List<Garment> pants = garmentService.findPants(10L, 1L, 20L);
-        List<Garment> shoes = garmentService.findShoes(10L, 1L, 20L);
+        List<Garment> outers = garmentService.findOuters(10L, 1L, 20L, Sex.BOTH);
+        List<Garment> tops = garmentService.findTops(10L, 1L, 20L, Sex.BOTH);
+        List<Garment> pants = garmentService.findPants(10L, 1L, 20L, Sex.BOTH);
+        List<Garment> shoes = garmentService.findShoes(10L, 1L, 20L, Sex.BOTH);
 
         // 1, 2번이 출력되어야 함
 
@@ -92,10 +93,10 @@ public class GarmentServiceTest {
 
         System.out.println("==========================");
 
-        List<Garment> outerList = garmentService.findOuters(20L, 1L, 20L);
-        List<Garment> topsList = garmentService.findTops(20L, 1L, 20L);
-        List<Garment> pantsList = garmentService.findPants(20L, 1L, 20L);
-        List<Garment> shoesList = garmentService.findShoes(20L, 1L, 20L);
+        List<Garment> outerList = garmentService.findOuters(20L, 1L, 20L, Sex.BOTH);
+        List<Garment> topsList = garmentService.findTops(20L, 1L, 20L, Sex.BOTH);
+        List<Garment> pantsList = garmentService.findPants(20L, 1L, 20L, Sex.BOTH);
+        List<Garment> shoesList = garmentService.findShoes(20L, 1L, 20L, Sex.BOTH);
 
         // 1, 5번이 출력되어야 함
 

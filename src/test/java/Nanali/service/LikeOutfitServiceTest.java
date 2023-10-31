@@ -5,6 +5,7 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Outfit;
+import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.OutfitWeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +46,13 @@ class LikeOutfitServiceTest {
         OutfitWeatherRequest outfitWeatherRequest6 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
         OutfitWeatherRequest outfitWeatherRequest7 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 30L);
 
-        Outfit outfit1 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest1);
-        Outfit outfit2 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest2);
-        Outfit outfit3 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest3);
-        Outfit outfit4 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest4);
-        Outfit outfit5 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest5);
-        Outfit outfit6 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest6);
-        Outfit outfit7 = outfitService.save(multipartFile, Style.CASUAL, outfitWeatherRequest7);
+        Outfit outfit1 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest1);
+        Outfit outfit2 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest2);
+        Outfit outfit3 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest3);
+        Outfit outfit4 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest4);
+        Outfit outfit5 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest5);
+        Outfit outfit6 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest6);
+        Outfit outfit7 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest7);
 
         LikeOutfit likeOutfit1 = new LikeOutfit(member, outfit1, LikeStatus.LIKE);
         LikeOutfit likeOutfit2 = new LikeOutfit(member, outfit2, LikeStatus.LIKE);

@@ -6,6 +6,7 @@ import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Garment;
+import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,33 +43,33 @@ public class LikeGarmentServiceTest {
         GarmentWeatherRequest garmentWeatherRequest5 = new GarmentWeatherRequest(10L, 14L, 0L, 3L, 80L, 100L);
         GarmentWeatherRequest garmentWeatherRequest6 = new GarmentWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
 
-        Garment top1 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest1);
-        Garment top2 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest2);
-        Garment top3 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest3);
-        Garment top4 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest4);
-        Garment top5 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest5);
-        Garment top6 = garmentService.save(multipartFile, Category.TOP, garmentWeatherRequest6);
+        Garment top1 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest1);
+        Garment top2 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest2);
+        Garment top3 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest3);
+        Garment top4 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest4);
+        Garment top5 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest5);
+        Garment top6 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest6);
 
-        Garment pants1 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest1);
-        Garment pants2 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest2);
-        Garment pants3 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest3);
-        Garment pants4 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest4);
-        Garment pants5 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest5);
-        Garment pants6 = garmentService.save(multipartFile, Category.PANTS, garmentWeatherRequest6);
+        Garment pants1 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest1);
+        Garment pants2 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest2);
+        Garment pants3 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest3);
+        Garment pants4 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest4);
+        Garment pants5 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest5);
+        Garment pants6 = garmentService.save(multipartFile, Category.PANTS, Sex.BOTH, garmentWeatherRequest6);
 
-        Garment outer1 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest1);
-        Garment outer2 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest2);
-        Garment outer3 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest3);
-        Garment outer4 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest4);
-        Garment outer5 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest5);
-        Garment outer6 = garmentService.save(multipartFile, Category.OUTER, garmentWeatherRequest6);
+        Garment outer1 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest1);
+        Garment outer2 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest2);
+        Garment outer3 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest3);
+        Garment outer4 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest4);
+        Garment outer5 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest5);
+        Garment outer6 = garmentService.save(multipartFile, Category.OUTER, Sex.BOTH, garmentWeatherRequest6);
 
-        Garment shoes1 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest1);
-        Garment shoes2 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest2);
-        Garment shoes3 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest3);
-        Garment shoes4 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest4);
-        Garment shoes5 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest5);
-        Garment shoes6 = garmentService.save(multipartFile, Category.SHOES, garmentWeatherRequest6);
+        Garment shoes1 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest1);
+        Garment shoes2 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest2);
+        Garment shoes3 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest3);
+        Garment shoes4 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest4);
+        Garment shoes5 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest5);
+        Garment shoes6 = garmentService.save(multipartFile, Category.SHOES, Sex.BOTH, garmentWeatherRequest6);
 
         LikeGarment LikeOuter1 = new LikeGarment(member, outer1, LikeStatus.LIKE);
         LikeGarment LikeOuter2 = new LikeGarment(member, outer2, LikeStatus.LIKE);
