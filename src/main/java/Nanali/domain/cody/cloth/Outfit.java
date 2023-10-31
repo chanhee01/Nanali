@@ -1,6 +1,7 @@
 package Nanali.domain.cody.cloth;
 
 import Nanali.domain.BaseEntity;
+import Nanali.domain.Member.Style;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,7 +20,10 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     private String imgUrl;
 
-    private String style; // Category 타입으로 수정 필요
+    private Style style; // Category 타입으로 수정 필요
+
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
 
     private Long temp_from;
     private Long temp_to;
@@ -35,11 +39,12 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     }
 
-    public Outfit(String imgName, String imgUrl, String style, Long temp_from, Long temp_to,
+    public Outfit(String imgName, String imgUrl, Style style, Sex sex, Long temp_from, Long temp_to,
                   Long uv_from, Long uv_to, Long rain_from, Long rain_to) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
         this.style = style;
+        this.sex = sex;
         this.temp_from = temp_from;
         this.temp_to = temp_to;
         this.uv_from = uv_from;
