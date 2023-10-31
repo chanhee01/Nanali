@@ -20,4 +20,18 @@ public class MemberImg extends BaseEntity {
     @JoinColumn(name = "member_id")
     @JsonIgnore
     private Member member;
+
+    public MemberImg() {
+
+    }
+
+    public MemberImg(String imgName, String imgUrl) {
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+    }
+
+    public void update_memberImg (String imgName, String imgUrl) {
+        this.imgName = imgName;
+        this.imgUrl = imgUrl;
+    }
 }
