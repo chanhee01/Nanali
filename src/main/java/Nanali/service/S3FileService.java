@@ -25,8 +25,6 @@ public class S3FileService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    // upload(multipartFile, "folderName")로 호출해서 해당 폴더에 들어가도록 설정
-
     @Transactional
     public Map<String, String> upload(MultipartFile multipartFile, String folderName) {
 
@@ -38,7 +36,7 @@ public class S3FileService {
             objMeta.setContentLength(multipartFile.getSize());
             objMeta.setContentDisposition("inline");
 
-            amazonS3.putObject(bucket, folderName + "/" + s3FileName, multipartFile.getInputStream(), objMeta);
+            amazonS3.putObject(bucket, s3FileName, multipartFile.getInputStream(), objMeta);
 
             String s3Url = amazonS3.getUrl(bucket, s3FileName).toString();
 
