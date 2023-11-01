@@ -12,5 +12,4 @@ public interface LikeOutfitRepository extends JpaRepository<LikeOutfit, Long> {
     @Query("select l from LikeOutfit l where l.member.id = :id and l.likeStatus = 'LIKE'")
     List<LikeOutfit> findAllByMember(@Param(value = "id") Long id);
 
-    void deleteById(Long id);
 }
