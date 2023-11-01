@@ -1,6 +1,5 @@
 package Nanali.dtos.MyPage;
 
-import Nanali.domain.outfit.LikeGarment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,8 @@ public class GarmentDto {
 
     String nickname;
     String email;
+    String memberImg;
+
     List<String> tops;
     List<String> pants;
     List<String> outers;

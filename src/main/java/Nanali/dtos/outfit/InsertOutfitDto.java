@@ -1,22 +1,18 @@
-package Nanali.dtos.garment;
+package Nanali.dtos.outfit;
+
 
 import Nanali.domain.Member.Style;
-import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Sex;
+import Nanali.dtos.weather.OutfitWeatherRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GarmentRequestDto {
+public class InsertOutfitDto {
 
-    private Long temp;
-    private Long uv;
-    private Long rain;
-
-    private Category category;
-
+    private Style style;
     private Sex sex;
+    private OutfitWeatherRequest weather;
 }

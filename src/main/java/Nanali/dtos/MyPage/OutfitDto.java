@@ -11,7 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OutfitDto {
 
-    String nickname;
-    String email;
-    List<String> outfits;
+    private String nickname;
+    private String email;
+    private String memberImg;
+    private List<String> outfits;
 }
