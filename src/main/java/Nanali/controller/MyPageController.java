@@ -1,6 +1,7 @@
 package Nanali.controller;
 
 import Nanali.domain.Member.Member;
+import Nanali.domain.Member.MemberImg;
 import Nanali.domain.Member.Style;
 import Nanali.dtos.MyPage.LikeGarmentDto;
 import Nanali.dtos.MyPage.LikeOutfitDto;
@@ -28,11 +29,24 @@ public class MyPageController {
         Member member = memberService.findById(1L);
         String nickname = member.getNickname();
         String email = member.getEmail();
-        String memberImg = member.getMemberImg().getImgUrl();
+
+        MemberImg memberImg;
+
+        String imgUrl;
+
+        if (member.getMemberImg() == null) {
+            memberImg = null;
+            imgUrl = null;
+        }
+        else {
+            memberImg = member.getMemberImg();
+            imgUrl = memberImg.getImgUrl();
+        }
+
 
         List<OutfitDto> outfits = likeOutfitService.findAllByMember(member);
 
-        LikeOutfitDto outfitDto = new LikeOutfitDto(nickname, email, memberImg, outfits);
+        LikeOutfitDto outfitDto = new LikeOutfitDto(nickname, email, imgUrl, outfits);
         return outfitDto;
     }
 
@@ -41,14 +55,26 @@ public class MyPageController {
         Member member = memberService.findById(1L);
         String nickname = member.getNickname();
         String email = member.getEmail();
-        String memberImg = member.getMemberImg().getImgUrl();
+
+        MemberImg memberImg;
+
+        String imgUrl;
+
+        if (member.getMemberImg() == null) {
+            memberImg = null;
+            imgUrl = null;
+        }
+        else {
+            memberImg = member.getMemberImg();
+            imgUrl = memberImg.getImgUrl();
+        }
 
         List<GarmentDto> tops = likeGarmentService.findTops(member);
         List<GarmentDto> pants = likeGarmentService.findPants(member);
         List<GarmentDto> outers = likeGarmentService.findOuters(member);
         List<GarmentDto> shoes = likeGarmentService.findShoes(member);
 
-        LikeGarmentDto garmentDto = new LikeGarmentDto(nickname, email, memberImg, tops, pants, outers, shoes);
+        LikeGarmentDto garmentDto = new LikeGarmentDto(nickname, email, imgUrl, outers, tops, pants, shoes);
         return garmentDto;
     }
 
