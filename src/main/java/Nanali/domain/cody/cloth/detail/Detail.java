@@ -1,9 +1,8 @@
 package Nanali.domain.cody.cloth.detail;
 
 import Nanali.domain.BaseEntity;
-import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
-import Nanali.domain.cody.cloth.Sex;
+import Nanali.domain.cody.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;

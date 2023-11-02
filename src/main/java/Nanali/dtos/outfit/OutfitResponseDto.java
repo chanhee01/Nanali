@@ -1,6 +1,5 @@
 package Nanali.dtos.outfit;
 
-import Nanali.domain.cody.cloth.Outfit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,8 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OutfitResponseDto {
+
+    private Long outfitId;
 
     private String outfitUrl;
 

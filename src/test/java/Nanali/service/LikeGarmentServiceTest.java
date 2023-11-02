@@ -7,6 +7,7 @@ import Nanali.domain.cody.LikeClothes.LikeGarment;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Garment;
 import Nanali.domain.cody.cloth.Sex;
+import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,27 +128,27 @@ public class LikeGarmentServiceTest {
         likeGarmentService.save(LikeShoes5);
         likeGarmentService.save(LikeShoes6);
 
-        List<String> outersList1 = likeGarmentService.findOuters(member);
-        List<String> topsList1 = likeGarmentService.findTops(member);
-        List<String> pantsList1 = likeGarmentService.findPants(member);
-        List<String> shoesList1 = likeGarmentService.findShoes(member);
+        List<GarmentDto> outersList1 = likeGarmentService.findOuters(member);
+        List<GarmentDto> topsList1 = likeGarmentService.findTops(member);
+        List<GarmentDto> pantsList1 = likeGarmentService.findPants(member);
+        List<GarmentDto> shoesList1 = likeGarmentService.findShoes(member);
 
 
         // 1 ~ 6까지 전체 출력
 
-        for (String outer : outersList1) {
+        for (GarmentDto outer : outersList1) {
             System.out.println("likeOutfit = " + outer);
         }
 
-        for (String top : topsList1) {
+        for (GarmentDto top : topsList1) {
             System.out.println("likeOutfit = " + top);
         }
 
-        for (String pants : pantsList1) {
+        for (GarmentDto pants : pantsList1) {
             System.out.println("likeOutfit = " + pants);
         }
 
-        for (String shoes : shoesList1) {
+        for (GarmentDto shoes : shoesList1) {
             System.out.println("likeOutfit = " + shoes);
         }
 
@@ -173,26 +174,26 @@ public class LikeGarmentServiceTest {
         likeGarmentService.changeLikeGarment(shoes3.getId());
         likeGarmentService.changeLikeGarment(shoes4.getId());
 
-        List<String> outersList2 = likeGarmentService.findOuters(member);
-        List<String> topsList2 = likeGarmentService.findTops(member);
-        List<String> pantsList2 = likeGarmentService.findPants(member);
-        List<String> shoesList2 = likeGarmentService.findShoes(member);
+        List<GarmentDto> outersList2 = likeGarmentService.findOuters(member);
+        List<GarmentDto> topsList2 = likeGarmentService.findTops(member);
+        List<GarmentDto> pantsList2 = likeGarmentService.findPants(member);
+        List<GarmentDto> shoesList2 = likeGarmentService.findShoes(member);
 
         // 5, 6만 출력
 
-        for (String outer : outersList2) {
+        for (GarmentDto outer : outersList2) {
             System.out.println("likeOutfit = " + outer);
         }
 
-        for (String top : topsList2) {
+        for (GarmentDto top : topsList2) {
             System.out.println("likeOutfit = " + top);
         }
 
-        for (String pants : pantsList2) {
+        for (GarmentDto pants : pantsList2) {
             System.out.println("likeOutfit = " + pants);
         }
 
-        for (String shoes : shoesList2) {
+        for (GarmentDto shoes : shoesList2) {
             System.out.println("likeOutfit = " + shoes);
         }
 
@@ -206,26 +207,26 @@ public class LikeGarmentServiceTest {
 
         likeGarmentService.changeLikeGarment(shoes1.getId());;
 
-        List<String> outersList3 = likeGarmentService.findOuters(member);
-        List<String> topsList3 = likeGarmentService.findTops(member);
-        List<String> pantsList3 = likeGarmentService.findPants(member);
-        List<String> shoesList3 = likeGarmentService.findShoes(member);
+        List<GarmentDto> outersList3 = likeGarmentService.findOuters(member);
+        List<GarmentDto> topsList3 = likeGarmentService.findTops(member);
+        List<GarmentDto> pantsList3 = likeGarmentService.findPants(member);
+        List<GarmentDto> shoesList3 = likeGarmentService.findShoes(member);
 
         // 1, 5 ,6만 출력
 
-        for (String outer : outersList3) {
+        for (GarmentDto outer : outersList3) {
             System.out.println("likeOutfit = " + outer);
         }
 
-        for (String top : topsList3) {
+        for (GarmentDto top : topsList3) {
             System.out.println("likeOutfit = " + top);
         }
 
-        for (String pants : pantsList3) {
+        for (GarmentDto pants : pantsList3) {
             System.out.println("likeOutfit = " + pants);
         }
 
-        for (String shoes : shoesList3) {
+        for (GarmentDto shoes : shoesList3) {
             System.out.println("likeOutfit = " + shoes);
         }
     }

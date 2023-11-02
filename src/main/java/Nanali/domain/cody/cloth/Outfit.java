@@ -1,8 +1,8 @@
 package Nanali.domain.cody.cloth;
 
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.BaseEntity;
 import Nanali.domain.Member.Style;
-import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
 

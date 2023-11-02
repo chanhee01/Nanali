@@ -1,13 +1,9 @@
 package Nanali.repository;
 
-import Nanali.domain.Member.Member;
-import Nanali.domain.cody.LikeClothes.LikeGarment;
 import Nanali.domain.cody.cloth.detail.Detail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface DetailRepository extends JpaRepository<Detail, Long> {
 

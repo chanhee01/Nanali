@@ -6,6 +6,7 @@ import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
+import Nanali.dtos.outfit.OutfitDto;
 import Nanali.dtos.weather.OutfitWeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,6 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class LikeOutfitServiceTest {
@@ -70,9 +69,9 @@ class LikeOutfitServiceTest {
         likeOutfitService.save(likeOutfit6);
         likeOutfitService.save(likeOutfit7);
 
-        List<String> allByMember = likeOutfitService.findAllByMember(member);
+        List<OutfitDto> allByMember1 = likeOutfitService.findAllByMember(member);
 
-        for (String outfit : allByMember) {
+        for (OutfitDto outfit : allByMember1) {
             System.out.println("likeOutfit = " + outfit);
         }
 
@@ -84,11 +83,11 @@ class LikeOutfitServiceTest {
         likeOutfitService.changeLikeOutfit(likeOutfit4.getId());
         likeOutfitService.changeLikeOutfit(likeOutfit5.getId());
 
-        List<String> allByMember2 = likeOutfitService.findAllByMember(member);
+        List<OutfitDto> allByMember2 = likeOutfitService.findAllByMember(member);
 
         // 6, 7만 떠야함
 
-        for (String outfit : allByMember2) {
+        for (OutfitDto outfit : allByMember2) {
             System.out.println("likeOutfit = " + outfit);
         }
 
@@ -97,11 +96,11 @@ class LikeOutfitServiceTest {
         likeOutfitService.changeLikeOutfit(likeOutfit1.getId());
         likeOutfitService.changeLikeOutfit(likeOutfit2.getId());
 
-        List<String> allByMember3 = likeOutfitService.findAllByMember(member);
+        List<OutfitDto> allByMember3 = likeOutfitService.findAllByMember(member);
 
         // 1, 2, 6, 7만 떠야함
 
-        for (String outfit : allByMember3) {
+        for (OutfitDto outfit : allByMember3) {
             System.out.println("likeOutfit = " + outfit);
         }
     }

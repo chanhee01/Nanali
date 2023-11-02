@@ -1,12 +1,9 @@
 package Nanali.service;
 
-import Nanali.domain.Member.Style;
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
-import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
-import Nanali.dtos.weather.OutfitWeatherRequest;
 import Nanali.repository.GarmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

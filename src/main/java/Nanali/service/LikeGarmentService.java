@@ -2,8 +2,8 @@ package Nanali.service;
 
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
-import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
+import Nanali.dtos.garment.GarmentDto;
 import Nanali.repository.LikeGarmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,31 +33,35 @@ public class LikeGarmentService {
         return likeGarmentRepository.findAllByMember(member);
     }
 
-    public List<String> findTops(Member member) {
+    public List<GarmentDto> findTops(Member member) {
         List<LikeGarment> allTop = likeGarmentRepository.findAllLikeTop(member);
 
-        List<String> LikeTops = allTop.stream().map(top -> top.getGarment().getImgUrl()).collect(Collectors.toList());
+        List<GarmentDto> LikeTops = allTop.stream().map(top -> new GarmentDto(top.getGarment().getId(),
+                top.getGarment().getImgUrl())).collect(Collectors.toList());
         return LikeTops;
     }
 
-    public List<String> findPants(Member member) {
+    public List<GarmentDto> findPants(Member member) {
         List<LikeGarment> allPants = likeGarmentRepository.findAllLikePants(member);
 
-        List<String> LikePants = allPants.stream().map(pant -> pant.getGarment().getImgUrl()).collect(Collectors.toList());
+        List<GarmentDto> LikePants = allPants.stream().map(pant -> new GarmentDto(pant.getGarment().getId(),
+                pant.getGarment().getImgUrl())).collect(Collectors.toList());
         return LikePants;
     }
 
-    public List<String> findOuters(Member member) {
+    public List<GarmentDto> findOuters(Member member) {
         List<LikeGarment> allOuter = likeGarmentRepository.findAllLikeOuter(member);
 
-        List<String> LikeOuters = allOuter.stream().map(outer -> outer.getGarment().getImgUrl()).collect(Collectors.toList());
+        List<GarmentDto> LikeOuters = allOuter.stream().map(outer -> new GarmentDto(outer.getGarment().getId(),
+                outer.getGarment().getImgUrl())).collect(Collectors.toList());
         return LikeOuters;
     }
 
-    public List<String> findShoes(Member member) {
+    public List<GarmentDto> findShoes(Member member) {
         List<LikeGarment> allShoes = likeGarmentRepository.findAllLikeShoes(member);
 
-        List<String> LikeShoes = allShoes.stream().map(shoes -> shoes.getGarment().getImgUrl()).collect(Collectors.toList());
+        List<GarmentDto> LikeShoes = allShoes.stream().map(shoes -> new GarmentDto(shoes.getGarment().getId(),
+                shoes.getGarment().getImgUrl())).collect(Collectors.toList());
         return LikeShoes;
     }
 

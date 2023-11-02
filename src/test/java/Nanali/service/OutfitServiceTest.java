@@ -5,16 +5,12 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.OutfitWeatherRequest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @SpringBootTest
 class OutfitServiceTest {

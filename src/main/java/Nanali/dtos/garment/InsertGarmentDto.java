@@ -1,17 +1,17 @@
-package Nanali.dtos.outfit;
+package Nanali.dtos.garment;
 
-
-import Nanali.domain.Member.Style;
+import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Sex;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InsertOutfitDto {
+public class InsertGarmentDto {
 
-    private Style style;
+    private Category category;
     private Sex sex;
     private Long temp_from;
     private Long temp_to;

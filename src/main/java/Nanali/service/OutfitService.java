@@ -47,12 +47,11 @@ public class OutfitService {
 
         Collections.shuffle(allOutifs);
 
-
         return allOutifs.get(0);
     }
 
     public Outfit findOne(Long id) {
-        Outfit find = outfitRepository.findById(id).get();
+        Outfit find = outfitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
         return find;
     }
 }
