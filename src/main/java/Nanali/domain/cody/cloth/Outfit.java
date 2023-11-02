@@ -20,7 +20,8 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     private String imgUrl;
 
-    private Style style; // Category 타입으로 수정 필요
+    @Enumerated(EnumType.STRING)
+    private Style style;
 
     @Enumerated(EnumType.STRING)
     private Sex sex;
