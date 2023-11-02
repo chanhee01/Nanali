@@ -21,8 +21,8 @@ public class LikeController {
     private final LikeOutfitService likeOutfitService;
     private final LikeGarmentService likeGarmentService;
 
-    @PostMapping("/outfit") // 추천 페이지에서 좋아요 누르기
-    public void LikeOutfit(@RequestBody Long outfitId) {
+    @PostMapping("/outfit/{outfitId}") // 추천 페이지에서 좋아요 누르기
+    public void LikeOutfit(@PathVariable Long outfitId) {
         Member member = memberService.findById(1L);
         Outfit outfit = outfitService.findOne(outfitId);
 
@@ -35,8 +35,8 @@ public class LikeController {
         likeOutfitService.changeLikeOutfit(outfitId);
     }
 
-    @PostMapping("/garment") // 추천 페이지에서 좋아요 누르기
-    public void LikeGarment(@RequestBody Long garmentId) {
+    @PostMapping("/garment/{garmentId}") // 추천 페이지에서 좋아요 누르기
+    public void LikeGarment(@PathVariable Long garmentId) {
         Member member = memberService.findById(1L);
         Garment garment = garmentService.findById(garmentId);
 
