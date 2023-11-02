@@ -2,8 +2,10 @@ package Nanali.controller;
 
 import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
-import Nanali.dtos.MyPage.GarmentDto;
-import Nanali.dtos.MyPage.OutfitDto;
+import Nanali.dtos.MyPage.LikeGarmentDto;
+import Nanali.dtos.MyPage.LikeOutfitDto;
+import Nanali.dtos.garment.GarmentDto;
+import Nanali.dtos.outfit.OutfitDto;
 import Nanali.service.LikeGarmentService;
 import Nanali.service.LikeOutfitService;
 import Nanali.service.MemberService;
@@ -22,31 +24,31 @@ public class MyPageController {
     private final LikeOutfitService likeOutfitService;
 
     @GetMapping("/outfit")
-    public OutfitDto outfit() {
+    public LikeOutfitDto outfit() {
         Member member = memberService.findById(1L);
         String nickname = member.getNickname();
         String email = member.getEmail();
         String memberImg = member.getMemberImg().getImgUrl();
 
-        List<String> outfits = likeOutfitService.findAllByMember(member);
+        List<OutfitDto> outfits = likeOutfitService.findAllByMember(member);
 
-        OutfitDto outfitDto = new OutfitDto(nickname, email, memberImg, outfits);
+        LikeOutfitDto outfitDto = new LikeOutfitDto(nickname, email, memberImg, outfits);
         return outfitDto;
     }
 
     @GetMapping("/garment")
-    public GarmentDto garment() {
+    public LikeGarmentDto garment() {
         Member member = memberService.findById(1L);
         String nickname = member.getNickname();
         String email = member.getEmail();
         String memberImg = member.getMemberImg().getImgUrl();
 
-        List<String> tops = likeGarmentService.findTops(member);
-        List<String> pants = likeGarmentService.findPants(member);
-        List<String> outers = likeGarmentService.findOuters(member);
-        List<String> shoes = likeGarmentService.findShoes(member);
+        List<GarmentDto> tops = likeGarmentService.findTops(member);
+        List<GarmentDto> pants = likeGarmentService.findPants(member);
+        List<GarmentDto> outers = likeGarmentService.findOuters(member);
+        List<GarmentDto> shoes = likeGarmentService.findShoes(member);
 
-        GarmentDto garmentDto = new GarmentDto(nickname, email, memberImg, tops, pants, outers, shoes);
+        LikeGarmentDto garmentDto = new LikeGarmentDto(nickname, email, memberImg, tops, pants, outers, shoes);
         return garmentDto;
     }
 
