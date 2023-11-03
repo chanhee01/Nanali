@@ -16,8 +16,8 @@ public class LikeGarmentDto {
     String email;
     String memberImg;
 
+    List<GarmentDto> outers;
     List<GarmentDto> tops;
     List<GarmentDto> pants;
-    List<GarmentDto> outers;
     List<GarmentDto> shoes;
 }
