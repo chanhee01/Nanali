@@ -11,10 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OutfitRequestDto {
 
-    private Long temp;
-    private Long uv;
-    private Long rain;
-
     private Style style;
 
     private Sex sex;

@@ -13,10 +13,10 @@ public class InsertOutfitDto {
 
     private Style style;
     private Sex sex;
-    private Long temp_from;
-    private Long temp_to;
-    private Long uv_from;
-    private Long uv_to;
-    private Long rain_from;
-    private Long rain_to;
+    private Double temp_from;
+    private Double temp_to;
+    private Double uv_from;
+    private Double uv_to;
+    private Double rain_from;
+    private Double rain_to;
 }

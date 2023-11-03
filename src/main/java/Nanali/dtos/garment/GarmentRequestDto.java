@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GarmentRequestDto {
 
-    private Long temp;
-    private Long uv;
-    private Long rain;
+    private Double temp;
+    private Double uv;
+    private Double rain;
 
     private Sex sex;
 }

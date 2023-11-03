@@ -30,13 +30,13 @@ class OutfitServiceTest {
         byte[] fileContent = "Test file content".getBytes();
         MultipartFile multipartFile = new MockMultipartFile("testfile.txt", "testfile.txt", "text/plain", fileContent);
 
-        OutfitWeatherRequest outfitWeatherRequest1 = new OutfitWeatherRequest(0L, 10L, 0L, 1L, 0L, 30L);
-        OutfitWeatherRequest outfitWeatherRequest2 = new OutfitWeatherRequest(10L, 20L, 0L, 1L, 0L, 50L);
-        OutfitWeatherRequest outfitWeatherRequest3 = new OutfitWeatherRequest(10L, 25L, 0L, 2L, 20L, 100L);
-        OutfitWeatherRequest outfitWeatherRequest4 = new OutfitWeatherRequest(10L, 20L, 0L, 3L, 70L, 100L);
-        OutfitWeatherRequest outfitWeatherRequest5 = new OutfitWeatherRequest(10L, 14L, 0L, 3L, 80L, 100L);
-        OutfitWeatherRequest outfitWeatherRequest6 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
-        OutfitWeatherRequest outfitWeatherRequest7 = new OutfitWeatherRequest(15L, 20L, 0L, 2L, 0L, 30L);
+        OutfitWeatherRequest outfitWeatherRequest1 = new OutfitWeatherRequest(0D, 10D, 0D, 1D, 0D, 30D);
+        OutfitWeatherRequest outfitWeatherRequest2 = new OutfitWeatherRequest(10D, 20D, 0D, 1D, 0D, 50D);
+        OutfitWeatherRequest outfitWeatherRequest3 = new OutfitWeatherRequest(10D, 25D, 0D, 2D, 20D, 100D);
+        OutfitWeatherRequest outfitWeatherRequest4 = new OutfitWeatherRequest(10D, 20D, 0D, 3D, 70D, 100D);
+        OutfitWeatherRequest outfitWeatherRequest5 = new OutfitWeatherRequest(10D, 14D, 0D, 3D, 80D, 100D);
+        OutfitWeatherRequest outfitWeatherRequest6 = new OutfitWeatherRequest(15D, 20D, 0D, 2D, 0D, 50D);
+        OutfitWeatherRequest outfitWeatherRequest7 = new OutfitWeatherRequest(15D, 20D, 0D, 2D, 0D, 30D);
 
         Outfit outfit1 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest1);
         Outfit outfit2 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest2);
@@ -50,15 +50,15 @@ class OutfitServiceTest {
 
         System.out.println("one" + one.getImgName());
 
-        Outfit style1 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL, Sex.BOTH);
+        Outfit style1 = outfitService.findOutfit(10D, 1D, 20D, Style.CASUAL, Sex.BOTH);
 
         System.out.println(style1.getImgName());
 
-        Outfit style2 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL, Sex.BOTH);
+        Outfit style2 = outfitService.findOutfit(10D, 1D, 20D, Style.CASUAL, Sex.BOTH);
 
         System.out.println(style2.getImgName());
 
-        Outfit style3 = outfitService.findOutfit(10L, 1L, 20L, Style.CASUAL, Sex.BOTH);
+        Outfit style3 = outfitService.findOutfit(10D, 1D, 20D, Style.CASUAL, Sex.BOTH);
 
         System.out.println(style3.getImgName());
     }

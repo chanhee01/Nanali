@@ -44,19 +44,19 @@ public class GarmentService {
         return garmentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
     }
 
-    public List<Garment> findOuters(Long temp, Long uv, Long rain, Sex sex) {
+    public List<Garment> findOuters(Double temp, Double uv, Double rain, Sex sex) {
         return garmentRepository.findAllByCategoryIsOuter(temp, uv, rain, sex);
     }
 
-    public List<Garment> findTops(Long temp, Long uv, Long rain, Sex sex) {
+    public List<Garment> findTops(Double temp, Double uv, Double rain, Sex sex) {
         return garmentRepository.findAllByCategoryIsTop(temp, uv, rain, sex);
     }
 
-    public List<Garment> findPants(Long temp, Long uv, Long rain, Sex sex) {
+    public List<Garment> findPants(Double temp, Double uv, Double rain, Sex sex) {
         return garmentRepository.findAllByCategoryIsPants(temp, uv, rain, sex);
     }
 
-    public List<Garment> findShoes(Long temp, Long uv, Long rain, Sex sex) {
+    public List<Garment> findShoes(Double temp, Double uv, Double rain, Sex sex) {
         return garmentRepository.findAllByCategoryIsShoes(temp, uv, rain, sex);
     }
 }

@@ -37,12 +37,12 @@ public class LikeGarmentServiceTest {
         byte[] fileContent = "Test file content".getBytes();
         MultipartFile multipartFile = new MockMultipartFile("testfile.txt", "testfile.txt", "text/plain", fileContent);
 
-        GarmentWeatherRequest garmentWeatherRequest1 = new GarmentWeatherRequest(0L, 10L, 0L, 1L, 0L, 30L);
-        GarmentWeatherRequest garmentWeatherRequest2 = new GarmentWeatherRequest(10L, 20L, 0L, 1L, 0L, 50L);
-        GarmentWeatherRequest garmentWeatherRequest3 = new GarmentWeatherRequest(10L, 25L, 0L, 2L, 20L, 100L);
-        GarmentWeatherRequest garmentWeatherRequest4 = new GarmentWeatherRequest(10L, 20L, 0L, 3L, 70L, 100L);
-        GarmentWeatherRequest garmentWeatherRequest5 = new GarmentWeatherRequest(10L, 14L, 0L, 3L, 80L, 100L);
-        GarmentWeatherRequest garmentWeatherRequest6 = new GarmentWeatherRequest(15L, 20L, 0L, 2L, 0L, 50L);
+        GarmentWeatherRequest garmentWeatherRequest1 = new GarmentWeatherRequest(0D, 10D, 0D, 1D, 0D, 30D);
+        GarmentWeatherRequest garmentWeatherRequest2 = new GarmentWeatherRequest(10D, 20D, 0D, 1D, 0D, 50D);
+        GarmentWeatherRequest garmentWeatherRequest3 = new GarmentWeatherRequest(10D, 25D, 0D, 2D, 20D, 100D);
+        GarmentWeatherRequest garmentWeatherRequest4 = new GarmentWeatherRequest(10D, 20D, 0D, 3D, 70D, 100D);
+        GarmentWeatherRequest garmentWeatherRequest5 = new GarmentWeatherRequest(10D, 14D, 0D, 3D, 80D, 100D);
+        GarmentWeatherRequest garmentWeatherRequest6 = new GarmentWeatherRequest(15D, 20D, 0D, 2D, 0D, 50D);
 
         Garment top1 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest1);
         Garment top2 = garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest2);
