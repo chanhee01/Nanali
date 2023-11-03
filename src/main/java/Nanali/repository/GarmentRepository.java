@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GarmentRepository extends JpaRepository<Garment, Long> {
 
@@ -34,4 +35,5 @@ public interface GarmentRepository extends JpaRepository<Garment, Long> {
     List<Garment> findAllByCategoryIsShoes(@Param(value = "temp") Long temp, @Param(value = "uv") Long uv,
                                            @Param(value = "rain") Long rain, @Param(value = "sex") Sex sex);
 
+    Optional<Garment> findById(long id);
 }
