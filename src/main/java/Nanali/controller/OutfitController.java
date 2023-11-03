@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Map;
 
 @RestController
@@ -32,14 +33,18 @@ public class OutfitController {
 
     @GetMapping
     public OutfitResponseDto Outfit(@RequestBody OutfitRequestDto request) throws Exception {
-        Outfit outfit = outfitService.findOutfit(request.getTemp(), request.getUv(), request.getRain(),
-                request.getStyle(), request.getSex());
-        String imgUrl = outfit.getImgUrl();
-
         LocalDateTime time = LocalDateTime.now();
         ResponseEntity<Map<String, Map<String, Object>>> weather = weatherService.weather(time);
 
-        System.out.println(new OutfitResponseDto(outfit.getId(), imgUrl, weather));
+        Map<String, Object> currentWeather = weatherService.getCurrentWeather(weather.getBody());
+
+        double temperature = (double) currentWeather.get("temperature");
+        double precipitation = (double) currentWeather.get("precipitation");
+        double uvIndex = (double) currentWeather.get("uv_index");
+
+        Outfit outfit = outfitService.findOutfit(temperature, precipitation, uvIndex,
+                request.getStyle(), request.getSex());
+        String imgUrl = outfit.getImgUrl();
 
         return new OutfitResponseDto(outfit.getId(), imgUrl, weather);
     }

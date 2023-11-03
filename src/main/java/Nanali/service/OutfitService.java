@@ -41,7 +41,7 @@ public class OutfitService {
         return savedOutfit;
     }
 
-    public Outfit findOutfit(Long temp, Long uv, Long rain, Style style, Sex sex) {
+    public Outfit findOutfit(Double temp, Double uv, Double rain, Style style, Sex sex) {
         // Style 타입으로 수정 필요
         List<Outfit> allOutifs = outfitRepository.findAllOutifs(temp, uv, rain, style, sex);
 
