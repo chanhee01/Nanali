@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Slf4j
@@ -101,6 +102,18 @@ public class WeatherService {
         } catch (JSONException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    public Map<String, Object> getCurrentWeather(Map<String, Map<String, Object>> weatherData) {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:00");
+        String currentTimeStr = currentTime.format(formatter);
+
+        if (weatherData.containsKey(currentTimeStr)) {
+            return weatherData.get(currentTimeStr);
+        } else {
+            return null;
         }
     }
 }

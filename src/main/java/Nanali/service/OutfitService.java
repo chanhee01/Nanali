@@ -2,6 +2,7 @@ package Nanali.service;
 
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
+import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.OutfitWeatherRequest;
 import Nanali.repository.OutfitRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class OutfitService {
     private final S3FileService s3FileService;
 
     @Transactional
-    public Outfit save(MultipartFile OutfitImg, Style style, OutfitWeatherRequest weather) {
+    public Outfit save(MultipartFile OutfitImg, Style style, Sex sex, OutfitWeatherRequest weather) {
 
         String imgName = "";
         String imgUrl = "";
@@ -32,7 +33,7 @@ public class OutfitService {
         imgName = s3FileName;
         imgUrl = s3Url;
 
-        Outfit outfit = new Outfit(imgName, imgUrl, style, weather.getTemp_from(), weather.getTemp_to(),
+        Outfit outfit = new Outfit(imgName, imgUrl, style, sex, weather.getTemp_from(), weather.getTemp_to(),
                 weather.getUv_from(), weather.getUv_to(), weather.getRain_from(), weather.getRain_to());
 
         Outfit savedOutfit = outfitRepository.save(outfit);
@@ -40,18 +41,17 @@ public class OutfitService {
         return savedOutfit;
     }
 
-    public Outfit findOutfit(Long temp, Long uv, Long rain, Style style) {
+    public Outfit findOutfit(Double temp, Double uv, Double rain, Style style, Sex sex) {
         // Style 타입으로 수정 필요
-        List<Outfit> allOutifs = outfitRepository.findAllOutifs(temp, uv, rain, style);
+        List<Outfit> allOutifs = outfitRepository.findAllOutifs(temp, uv, rain, style, sex);
 
         Collections.shuffle(allOutifs);
-
 
         return allOutifs.get(0);
     }
 
     public Outfit findOne(Long id) {
-        Outfit find = outfitRepository.findById(id).get();
+        Outfit find = outfitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
         return find;
     }
 }

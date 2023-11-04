@@ -3,6 +3,7 @@ package Nanali.service;
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
+import Nanali.dtos.outfit.OutfitDto;
 import Nanali.repository.LikeOutfitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,11 +29,12 @@ public class LikeOutfitService {
         return likeOutfitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
     }
 
-    public List<String> findAllByMember(Member member) {
+    public List<OutfitDto> findAllByMember(Member member) {
         List<LikeOutfit> allByMember = likeOutfitRepository.findAllByMember(member.getId());
 
-        List<String> LikeOutfits = allByMember.stream()
-                .map(outfit -> outfit.getOutfit().getImgUrl())
+        List<OutfitDto> LikeOutfits = allByMember.stream()
+                .map(outfit -> new OutfitDto(outfit.getOutfit().getId(),
+                        outfit.getOutfit().getImgUrl()))
                 .collect(Collectors.toList());
         return LikeOutfits;
     }

@@ -1,6 +1,6 @@
 package Nanali.dtos.MyPage;
 
-import Nanali.domain.outfit.LikeGarment;
+import Nanali.dtos.garment.GarmentDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,12 +10,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GarmentDto {
+public class LikeGarmentDto {
 
     String nickname;
     String email;
-    List<String> tops;
-    List<String> pants;
-    List<String> outers;
-    List<String> shoes;
+    String memberImg;
+
+    List<GarmentDto> outers;
+    List<GarmentDto> tops;
+    List<GarmentDto> pants;
+    List<GarmentDto> shoes;
 }

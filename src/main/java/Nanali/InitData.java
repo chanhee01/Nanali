@@ -1,6 +1,7 @@
 package Nanali;
 
 import Nanali.domain.Member.Member;
+import Nanali.domain.Member.Style;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -29,7 +30,7 @@ public class InitData {
 
         @Transactional
         public void init() {
-            Member member = new Member("aaa", "bbb", "ccc", "aaa@naver.com", true, 12, "abc");
+            Member member = new Member("aaa", "bbb", "ccc", "aaa@naver.com", true, 12, Style.CASUAL);
             em.persist(member);
         }
     }

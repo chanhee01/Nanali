@@ -1,8 +1,8 @@
 package Nanali.domain.cody.cloth;
 
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.BaseEntity;
 import Nanali.domain.Member.Style;
-import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -20,17 +20,18 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     private String imgUrl;
 
-    private Style style; // Category 타입으로 수정 필요
+    @Enumerated(EnumType.STRING)
+    private Style style;
 
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    private Long temp_from;
-    private Long temp_to;
-    private Long uv_from;
-    private Long uv_to;
-    private Long rain_from;
-    private Long rain_to;
+    private Double temp_from;
+    private Double temp_to;
+    private Double uv_from;
+    private Double uv_to;
+    private Double rain_from;
+    private Double rain_to;
 
     @OneToMany(mappedBy = "outfit")
     private List<LikeOutfit> outfitList;
@@ -39,8 +40,8 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     }
 
-    public Outfit(String imgName, String imgUrl, Style style, Sex sex, Long temp_from, Long temp_to,
-                  Long uv_from, Long uv_to, Long rain_from, Long rain_to) {
+    public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double temp_from, Double temp_to,
+                  Double uv_from, Double uv_to, Double rain_from, Double rain_to) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
         this.style = style;

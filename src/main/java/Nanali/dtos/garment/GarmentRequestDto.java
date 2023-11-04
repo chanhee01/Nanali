@@ -1,7 +1,6 @@
 package Nanali.dtos.garment;
 
-import Nanali.domain.Member.Style;
-import Nanali.domain.cody.Category;
+import Nanali.domain.cody.cloth.Sex;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GarmentRequestDto {
 
-    private Long temp;
-    private Long uv;
-    private Long rain;
+    private Double temp;
+    private Double uv;
+    private Double rain;
 
-    private Category category;
+    private Sex sex;
 }
