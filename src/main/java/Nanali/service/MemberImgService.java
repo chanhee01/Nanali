@@ -22,7 +22,7 @@ public class MemberImgService {
     private final S3FileService s3FileService;
 
     @Transactional
-    public void saveImg(Member member, MultipartFile imgInMember) throws Exception{
+    public MemberImg saveImg(MultipartFile imgInMember, Member member) {
 
         String imgName = "";
         String imgUrl = "";
@@ -31,9 +31,10 @@ public class MemberImgService {
         String s3Url = result.get("s3Url");
         imgName = s3FileName;
         imgUrl = s3Url;
-        MemberImg memberImg = new MemberImg(imgName, imgUrl);
+        MemberImg memberImg = new MemberImg(imgName, imgUrl, member);
 
-        memberImgRepository.save(memberImg);
+        MemberImg savedImg = memberImgRepository.save(memberImg);
+        return savedImg;
     }
 
     public MemberImg findMemberImg(Member member) {
@@ -42,16 +43,20 @@ public class MemberImgService {
         return memberImg;
     }
 
-    @Transactional
-    public void updateMemberImg(Member member, MultipartFile imgInMember) throws Exception {
-        MemberImg memberImg = findMemberImg(member);
+    public MemberImg findById(Long id) {
+        MemberImg memberImg = memberImgRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        return memberImg;
+    }
 
+    @Transactional
+    public void updateImg(MultipartFile MemberImg, Long memberImgId) {
+        // 기존 이미지 삭제
+        MemberImg memberImg = findById(memberImgId);
         s3FileService.deleteImage(memberImg.getImgName());
 
-        String memberImgName = imgInMember.getOriginalFilename();
         String imgName = "";
         String imgUrl = "";
-        Map<String, String> result = s3FileService.upload(imgInMember, "memberImg");
+        Map<String, String> result = s3FileService.upload(MemberImg, "memberImg");
         String s3FileName = result.get("s3FileName");
         String s3Url = result.get("s3Url");
         imgName = s3FileName;

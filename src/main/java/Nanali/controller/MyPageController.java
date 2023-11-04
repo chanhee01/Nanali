@@ -9,9 +9,11 @@ import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.outfit.OutfitDto;
 import Nanali.service.LikeGarmentService;
 import Nanali.service.LikeOutfitService;
+import Nanali.service.MemberImgService;
 import Nanali.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class MyPageController {
     private final MemberService memberService;
     private final LikeGarmentService likeGarmentService;
     private final LikeOutfitService likeOutfitService;
+    private final MemberImgService memberImgService;
 
     @GetMapping("/outfit")
     public LikeOutfitDto outfit() {
@@ -96,5 +99,19 @@ public class MyPageController {
     public void changePassword(@RequestBody String password) {
         Member member = memberService.findById(1L);
         memberService.changePassword(member, password);
+    }
+
+    @PutMapping("/memberImg")
+    public void changeMemberImg(@RequestPart MultipartFile memberImg) {
+        Member member = memberService.findById(1L);
+
+        MemberImg image = memberImgService.findMemberImg(member);
+        if(image != null) {
+            Long memberImgId = image.getId();
+            memberImgService.updateImg(memberImg, memberImgId);
+        }
+        else {
+            memberImgService.saveImg(memberImg, member);
+        }
     }
 }

@@ -25,9 +25,10 @@ public class MemberImg extends BaseEntity {
 
     }
 
-    public MemberImg(String imgName, String imgUrl) {
+    public MemberImg(String imgName, String imgUrl, Member member) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
+        this.member = member;
     }
 
     public void update_memberImg (String imgName, String imgUrl) {
