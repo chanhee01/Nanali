@@ -30,7 +30,7 @@ public class LikeController {
         likeOutfitService.save(likeOutfit);
     } // 좋아요 누르면 프론트쪽에서 더 못누르게, 마이페이지에서 수정
 
-    @PutMapping("/outfit/change") // 마이페이지 좋아요 누르기, 취소
+    @PatchMapping("/outfit/change") // 마이페이지 좋아요 누르기, 취소
     public void changeOutfit(@RequestBody Long outfitId) {
         likeOutfitService.changeLikeOutfit(outfitId);
     }
@@ -44,7 +44,7 @@ public class LikeController {
         likeGarmentService.save(likeGarment);
     } // 좋아요 누르면 프론트쪽에서 더 못누르게, 마이페이지에서 수정
 
-    @PutMapping("/garment/change") // 마이페이지 좋아요 누르기, 취소
+    @PatchMapping("/garment/change") // 마이페이지 좋아요 누르기, 취소
     public void changeGarment(@RequestBody Long garmentId) {
         likeOutfitService.changeLikeOutfit(garmentId);
     }

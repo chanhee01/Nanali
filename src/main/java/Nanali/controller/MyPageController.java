@@ -83,25 +83,25 @@ public class MyPageController {
 
     // 로그인 시 세션 넣고 인증도 넣어야할듯
 
-    @PutMapping("/change/nickname")
+    @PatchMapping("/change/nickname")
     public void changeNickname(@RequestBody String nickname) {
         Member member = memberService.findById(1L);
         memberService.changeNickname(member, nickname);
     }
 
-    @PutMapping("/change/style")
+    @PatchMapping("/change/style")
     public void changeStyle(@RequestBody Style style) {
         Member member = memberService.findById(1L);
         memberService.changeStyle(member, style);
     }
 
-    @PutMapping("/change/password")
+    @PatchMapping("/change/password")
     public void changePassword(@RequestBody String password) {
         Member member = memberService.findById(1L);
         memberService.changePassword(member, password);
     }
 
-    @PutMapping("/memberImg")
+    @PatchMapping("/memberImg")
     public void changeMemberImg(@RequestPart MultipartFile memberImg) {
         Member member = memberService.findById(1L);
 
