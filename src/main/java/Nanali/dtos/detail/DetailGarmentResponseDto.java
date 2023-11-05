@@ -1,4 +1,4 @@
-package Nanali.dtos.DetailOutfit;
+package Nanali.dtos.detail;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DetailGarmentRequestDto {
+public class DetailGarmentResponseDto {
 
-    private long id;
+    private String garmentURl;
 
 }
