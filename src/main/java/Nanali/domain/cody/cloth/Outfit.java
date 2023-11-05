@@ -3,6 +3,7 @@ package Nanali.domain.cody.cloth;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.BaseEntity;
 import Nanali.domain.Member.Style;
+import Nanali.domain.cody.cloth.detail.Detail;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -36,6 +37,9 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     @OneToMany(mappedBy = "outfit")
     private List<LikeOutfit> outfitList;
 
+    @OneToMany(mappedBy = "outfit")
+    private List<Detail> details;
+
     public Outfit() {
 
     }
@@ -57,5 +61,9 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     // 연관관계 메서드
     public void addLikeOutfit(LikeOutfit likeOutfit) {
         outfitList.add(likeOutfit);
+    }
+
+    public void addDetail(Detail detail) {
+        details.add(detail);
     }
 }
