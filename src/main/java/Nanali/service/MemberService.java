@@ -45,9 +45,7 @@ public class MemberService {
     @Transactional
     public void changePassword(Member member, String password) {
         Member findMember = findById(member.getId());
-        if (validationPassword(password) == true) {
-            findMember.changePassword(password);
-        }
+        findMember.changePassword(password);
     }
 
     public boolean validationNickname(String nickname) {
@@ -60,13 +58,4 @@ public class MemberService {
         }
     }
 
-    public boolean validationPassword(String password) {
-        List<Member> findMember = memberRepository.findAllByPassword(password);
-        if(!findMember.isEmpty()) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 }
