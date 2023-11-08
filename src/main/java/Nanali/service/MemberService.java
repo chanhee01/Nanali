@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -28,7 +31,9 @@ public class MemberService {
     @Transactional
     public void changeNickname(Member member, String nickname) {
         Member findMember = findById(member.getId());
-        findMember.changeNickname(nickname);
+        if (validationNickname(nickname) == true) {
+            findMember.changeNickname(nickname);
+        }
     }
 
     @Transactional
@@ -40,6 +45,28 @@ public class MemberService {
     @Transactional
     public void changePassword(Member member, String password) {
         Member findMember = findById(member.getId());
-        findMember.changePassword(password);
+        if (validationPassword(password) == true) {
+            findMember.changePassword(password);
+        }
+    }
+
+    public boolean validationNickname(String nickname) {
+        List<Member> findMember = memberRepository.findAllByNickname(nickname);
+        if(!findMember.isEmpty()) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public boolean validationPassword(String password) {
+        List<Member> findMember = memberRepository.findAllByPassword(password);
+        if(!findMember.isEmpty()) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
