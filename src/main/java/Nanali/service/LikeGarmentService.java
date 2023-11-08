@@ -2,7 +2,10 @@ package Nanali.service;
 
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
+import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
+import Nanali.domain.cody.cloth.Garment;
+import Nanali.domain.cody.cloth.Outfit;
 import Nanali.dtos.garment.GarmentDto;
 import Nanali.repository.LikeGarmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -74,6 +77,22 @@ public class LikeGarmentService {
         }
         else {
             findGarment.changeLikeStatus(LikeStatus.LIKE);
+        }
+    }
+
+    @Transactional
+    public void deleteLikeGarment(Member member, Garment garment) {
+        LikeGarment likeGarment = likeGarmentRepository.findOneByMemberAndGarment(member.getId(), garment.getId());
+        likeGarmentRepository.deleteById(likeGarment.getId());
+    }
+
+    public boolean validationLikeGarment(Long memberId, Long garmentId) {
+        List<LikeGarment> likeGarments = likeGarmentRepository.findOneByMember(memberId, garmentId);
+        if (likeGarments.isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

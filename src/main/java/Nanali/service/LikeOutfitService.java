@@ -3,6 +3,7 @@ package Nanali.service;
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
+import Nanali.domain.cody.cloth.Outfit;
 import Nanali.dtos.outfit.OutfitDto;
 import Nanali.repository.LikeOutfitRepository;
 import lombok.RequiredArgsConstructor;
@@ -48,6 +49,22 @@ public class LikeOutfitService {
         }
         else {
             findOutfit.changeLikeStatus(LikeStatus.LIKE);
+        }
+    }
+
+    @Transactional
+    public void deleteLikeOutfit(Member member, Outfit outfit) {
+        LikeOutfit likeOutfit = likeOutfitRepository.findOneByMemberAndOutfit(member.getId(), outfit.getId());
+        likeOutfitRepository.deleteById(likeOutfit.getId());
+    }
+
+    public boolean validationLikeOutfit(Long memberId, Long outfitId) {
+        List<LikeOutfit> likeOutfit = likeOutfitRepository.findOneByMember(memberId, outfitId);
+        if (likeOutfit.isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

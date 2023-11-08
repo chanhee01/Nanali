@@ -26,13 +26,21 @@ public class LikeController {
         Member member = memberService.findById(1L);
         Outfit outfit = outfitService.findOne(outfitId);
 
-        LikeOutfit likeOutfit = new LikeOutfit(member, outfit, LikeStatus.LIKE);
-        likeOutfitService.save(likeOutfit);
-    } // 좋아요 누르면 프론트쪽에서 더 못누르게, 마이페이지에서 수정
+        boolean CanLikeStatus = likeOutfitService.validationLikeOutfit(member.getId(), outfitId);
+        if (CanLikeStatus == true) {
+            LikeOutfit likeOutfit = new LikeOutfit(member, outfit, LikeStatus.LIKE);
+            likeOutfitService.save(likeOutfit);
+        }
+        else {
+        }
+    }
 
-    @PatchMapping("/outfit/change") // 마이페이지 좋아요 누르기, 취소
-    public void changeOutfit(@RequestBody Long outfitId) {
-        likeOutfitService.changeLikeOutfit(outfitId);
+    @DeleteMapping("/outfit/{outfitId}")
+    public void deleteOutfit(@PathVariable Long outfitId) {
+        Member member = memberService.findById(1L);
+        Outfit outfit = outfitService.findOne(outfitId);
+
+        likeOutfitService.deleteLikeOutfit(member, outfit);
     }
 
     @PostMapping("/garment/{garmentId}") // 추천 페이지에서 좋아요 누르기
@@ -40,12 +48,31 @@ public class LikeController {
         Member member = memberService.findById(1L);
         Garment garment = garmentService.findById(garmentId);
 
-        LikeGarment likeGarment = new LikeGarment(member, garment, LikeStatus.LIKE);
-        likeGarmentService.save(likeGarment);
-    } // 좋아요 누르면 프론트쪽에서 더 못누르게, 마이페이지에서 수정
+        boolean CanLikeStatus = likeGarmentService.validationLikeGarment(member.getId(), garmentId);
+        if (CanLikeStatus == true) {
+            LikeGarment likeGarment = new LikeGarment(member, garment, LikeStatus.LIKE);
+            likeGarmentService.save(likeGarment);
+        }
+        else {
+        }
+    }
 
-    @PatchMapping("/garment/change") // 마이페이지 좋아요 누르기, 취소
+    @DeleteMapping("/garment/{garmentId}")
+    public void deleteGarment(@PathVariable Long garmentId) {
+        Member member = memberService.findById(1L);
+        Garment garment = garmentService.findById(garmentId);
+
+        likeGarmentService.deleteLikeGarment(member, garment);
+    }
+
+
+    /*@PatchMapping("/outfit/change") // 마이페이지 좋아요 누르기, 취소
+    public void changeOutfit(@RequestBody Long outfitId) {
+        likeOutfitService.changeLikeOutfit(outfitId);
+    }*/
+
+    /*@PatchMapping("/garment/change") // 마이페이지 좋아요 누르기, 취소
     public void changeGarment(@RequestBody Long garmentId) {
         likeOutfitService.changeLikeOutfit(garmentId);
-    }
+    }*/
 }
