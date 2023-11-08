@@ -25,14 +25,12 @@ public class OutfitController {
 
     private final WeatherService weatherService;
 
-    private final DetailService detailService;
-
     @GetMapping
     public OutfitResponseDto Outfit(@RequestBody OutfitRequestDto request) throws Exception {
-        LocalDateTime time = LocalDateTime.now();
+        LocalDateTime time = request.getTime();
         ResponseEntity<Map<String, Map<String, Object>>> weather = weatherService.weather(time);
 
-        Map<String, Object> currentWeather = weatherService.getCurrentWeather(weather.getBody());
+        Map<String, Object> currentWeather = weatherService.getCurrentWeather(weather.getBody(), request.getTime());
 
         double temperature = (double) currentWeather.get("temperature");
         double precipitation = (double) currentWeather.get("precipitation");

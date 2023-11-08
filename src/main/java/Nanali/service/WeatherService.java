@@ -105,10 +105,13 @@ public class WeatherService {
         }
     }
 
-    public Map<String, Object> getCurrentWeather(Map<String, Map<String, Object>> weatherData) {
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:00");
+    public Map<String, Object> getCurrentWeather(Map<String, Map<String, Object>> weatherData, LocalDateTime time) {
+        LocalDateTime currentTime = time;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd 09:00");
         String currentTimeStr = currentTime.format(formatter);
+
+        System.out.println(currentTime);
+        System.out.println(currentTimeStr);
 
         if (weatherData.containsKey(currentTimeStr)) {
             return weatherData.get(currentTimeStr);
