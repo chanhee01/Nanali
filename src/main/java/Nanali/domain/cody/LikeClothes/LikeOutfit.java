@@ -6,9 +6,11 @@ import Nanali.domain.cody.cloth.Outfit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class LikeOutfit extends BaseEntity {
 
     @Id
@@ -27,10 +29,6 @@ public class LikeOutfit extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private LikeStatus likeStatus;
-
-    public LikeOutfit() {
-
-    }
 
     public LikeOutfit(Member member, Outfit outfit, LikeStatus likeStatus) {
         this.member = member;

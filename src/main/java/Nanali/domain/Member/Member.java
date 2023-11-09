@@ -5,11 +5,13 @@ import Nanali.domain.BaseEntity;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Member extends BaseEntity {
 
     @Id @GeneratedValue
@@ -38,9 +40,6 @@ public class Member extends BaseEntity {
 
     @OneToOne(mappedBy = "member")
     private MemberImg memberImg;
-
-    public Member() {
-    }
 
     public Member(String loginId, String password, String nickname, String email, boolean sex, int age, Style style) {
         this.loginId = loginId;

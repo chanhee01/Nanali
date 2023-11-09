@@ -4,9 +4,11 @@ import Nanali.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class MemberImg extends BaseEntity {
 
     @Id @GeneratedValue
@@ -20,10 +22,6 @@ public class MemberImg extends BaseEntity {
     @JoinColumn(name = "member_id")
     @JsonIgnore
     private Member member;
-
-    public MemberImg() {
-
-    }
 
     public MemberImg(String imgName, String imgUrl, Member member) {
         this.imgName = imgName;

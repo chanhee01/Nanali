@@ -7,9 +7,11 @@ import Nanali.domain.cody.cloth.Outfit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Detail extends BaseEntity { // Outfit으로 추천된 사진의 각각 개별 item
     // Detail과 분류한 이유는 무신사에서 크롤링할 때, 코디랑 개별 상품을 아예 다른 페이지에서 크롤링하기 때문에 분류함
     // Outfit과 연관관계를 맺는다고 가정을 한다면 FK에 null 값이 너무 많이 들어갈 것이라 생각되고
@@ -30,10 +32,6 @@ public class Detail extends BaseEntity { // Outfit으로 추천된 사진의 각
     @JoinColumn(name = "garment_id")
     @JsonIgnore
     private Outfit outfit;
-
-    public Detail() {
-
-    }
 
     public Detail(String imgName, String imgUrl, Category category, Outfit outfit) {
         this.imgName = imgName;

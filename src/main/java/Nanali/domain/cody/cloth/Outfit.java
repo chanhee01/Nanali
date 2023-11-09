@@ -6,11 +6,13 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.detail.Detail;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     @Id
@@ -39,10 +41,6 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     @OneToMany(mappedBy = "outfit")
     private List<Detail> details;
-
-    public Outfit() {
-
-    }
 
     public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double temp_from, Double temp_to,
                   Double uv_from, Double uv_to, Double rain_from, Double rain_to) {
