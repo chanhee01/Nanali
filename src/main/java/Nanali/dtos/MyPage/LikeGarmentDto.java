@@ -12,12 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 public class LikeGarmentDto {
 
-    String nickname;
-    String email;
-    String memberImg;
+    private String nickname;
+    private String email;
+    private String memberImg;
 
-    List<GarmentDto> outers;
-    List<GarmentDto> tops;
-    List<GarmentDto> pants;
-    List<GarmentDto> shoes;
+    private List<GarmentDto> outers;
+    private List<GarmentDto> tops;
+    private List<GarmentDto> pants;
+    private List<GarmentDto> shoes;
 }
