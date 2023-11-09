@@ -31,7 +31,7 @@ public class OutfitController {
     @GetMapping
     public OutfitResponseDto Outfit(@RequestBody OutfitRequestDto request) throws Exception {
         LocalDateTime time = request.getTime();
-        ResponseEntity<Map<String, Map<String, Object>>> weather = weatherService.weather(time);
+        ResponseEntity<Map<String, Map<String, Double>>> weather = weatherService.weather(time);
 
         Member member = memberService.findById(1L);
 
@@ -51,7 +51,7 @@ public class OutfitController {
             sex = request.getSex();
         }
 
-        Map<String, Object> currentWeather = weatherService.getCurrentWeather(weather.getBody(), request.getTime());
+        Map<String, Double> currentWeather = weatherService.getCurrentWeather(weather.getBody(), request.getTime());
 
         double temperature = (double) currentWeather.get("temperature");
         double precipitation = (double) currentWeather.get("precipitation");

@@ -24,7 +24,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class WeatherService {
 
-    public ResponseEntity<Map<String, Map<String, Object>>> weather(LocalDateTime weatherTime) throws IOException {
+    public ResponseEntity<Map<String, Map<String, Double>>> weather(LocalDateTime weatherTime) throws IOException {
 
         String today = weatherTime.toString().concat("T");
         today = today.substring(0, today.indexOf("T"));
@@ -70,7 +70,7 @@ public class WeatherService {
             JSONArray uvIndexData = hourlyTimes.getJSONArray("uv_index");
 
             // 날짜별 데이터를 매핑하기 위한 Map
-            HashMap<String, Map<String, Object>> weatherDataByDate = new HashMap<>();
+            HashMap<String, Map<String, Double>> weatherDataByDate = new HashMap<>();
 
             for (int i = 0; i < timeData.length(); i++) {
                 // 이전 코드 생략
@@ -84,7 +84,7 @@ public class WeatherService {
                 String date = time.replace("T", " ");
 
                 // 해당 날짜에 대한 데이터 매핑
-                Map<String, Object> weatherData = new HashMap<>();
+                Map<String, Double> weatherData = new HashMap<>();
                 weatherData.put("temperature", temperature);
                 weatherData.put("precipitation", precipitation);
                 weatherData.put("uv_index", uvIndex);
@@ -95,7 +95,7 @@ public class WeatherService {
                 }
             }
 
-            List<Map.Entry<String, Map<String, Object>>> sortedList = new ArrayList<>(weatherDataByDate.entrySet());
+            List<Map.Entry<String, Map<String, Double>>> sortedList = new ArrayList<>(weatherDataByDate.entrySet());
 
             // ResponseEntity로 매핑된 데이터 반환
             return ResponseEntity.ok(weatherDataByDate);
@@ -105,7 +105,7 @@ public class WeatherService {
         }
     }
 
-    public Map<String, Object> getCurrentWeather(Map<String, Map<String, Object>> weatherData, LocalDateTime time) {
+    public Map<String, Double> getCurrentWeather(Map<String, Map<String, Double>> weatherData, LocalDateTime time) {
         LocalDateTime currentTime = time;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd 09:00");
         String currentTimeStr = currentTime.format(formatter);

@@ -16,5 +16,5 @@ public class OutfitResponseDto {
 
     private String outfitUrl;
 
-    private ResponseEntity<Map<String, Map<String, Object>>> weather;
+    private ResponseEntity<Map<String, Map<String, Double>>> weather;
 }
