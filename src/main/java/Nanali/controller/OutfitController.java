@@ -53,9 +53,9 @@ public class OutfitController {
 
         Map<String, Double> currentWeather = weatherService.getCurrentWeather(weather.getBody(), request.getTime());
 
-        double temperature = (double) currentWeather.get("temperature");
-        double precipitation = (double) currentWeather.get("precipitation");
-        double uvIndex = (double) currentWeather.get("uv_index");
+        double temperature = currentWeather.get("temperature");
+        double precipitation = currentWeather.get("precipitation");
+        double uvIndex = currentWeather.get("uv_index");
 
         System.out.println("sex :" + sex + "style :" + style);
 

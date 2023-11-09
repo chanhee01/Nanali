@@ -37,6 +37,11 @@ public class DetailService {
         return saved.getId();
     }
 
+    public Detail findOne(Long id) {
+        Detail detail = detailRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        return detail;
+    }
+
     public Detail findOuter(Long id) {
         Detail outer = detailRepository.findOuter(id);
         return outer;

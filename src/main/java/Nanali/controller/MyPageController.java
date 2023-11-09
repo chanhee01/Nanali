@@ -46,7 +46,6 @@ public class MyPageController {
             imgUrl = memberImg.getImgUrl();
         }
 
-
         List<OutfitDto> outfits = likeOutfitService.findAllByMember(member);
 
         LikeOutfitDto outfitDto = new LikeOutfitDto(nickname, email, imgUrl, outfits);
