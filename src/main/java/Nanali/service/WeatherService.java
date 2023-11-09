@@ -70,7 +70,7 @@ public class WeatherService {
             JSONArray uvIndexData = hourlyTimes.getJSONArray("uv_index");
 
             // 날짜별 데이터를 매핑하기 위한 Map
-            TreeMap<String, Map<String, Object>> weatherDataByDate = new TreeMap<>();
+            HashMap<String, Map<String, Object>> weatherDataByDate = new HashMap<>();
 
             for (int i = 0; i < timeData.length(); i++) {
                 // 이전 코드 생략
