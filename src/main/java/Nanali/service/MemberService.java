@@ -49,7 +49,7 @@ public class MemberService {
     }
 
     public boolean validationNickname(String nickname) {
-        List<Member> findMember = memberRepository.findAllByNickname(nickname);
+        List<Member> findMember = memberRepository.findByNickname(nickname);
         if(!findMember.isEmpty()) {
             return false;
         }

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    List<Member> findAllByNickname(String nickname);
+    List<Member> findByNickname(String nickname);
 
-    List<Member> findAllByPassword(String password);
 }

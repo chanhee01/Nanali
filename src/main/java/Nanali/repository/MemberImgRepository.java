@@ -8,7 +8,5 @@ import java.util.Optional;
 
 public interface MemberImgRepository extends JpaRepository<MemberImg, Long> {
 
-    MemberImg findByMember(Member member);
-
     Optional<MemberImg> findById(Long id);
 }
