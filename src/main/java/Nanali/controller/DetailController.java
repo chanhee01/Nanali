@@ -25,13 +25,13 @@ public class DetailController {
     private final GarmentService garmentService;
 
     @GetMapping("/{outfitId}")
-    public DetailRequestDto details(@PathVariable("outfitId") Long id) {
-        Outfit outfit = outfitService.findOne(id);
+    public DetailRequestDto details(@PathVariable Long outfitId) {
+        Outfit outfit = outfitService.findOne(outfitId);
 
-        Detail outer = detailService.findOuter(id);
-        Detail top = detailService.findTop(id);
-        Detail pants = detailService.findPants(id);
-        Detail shoes = detailService.findShoes(id);
+        Detail outer = detailService.findOuter(outfitId);
+        Detail top = detailService.findTop(outfitId);
+        Detail pants = detailService.findPants(outfitId);
+        Detail shoes = detailService.findShoes(outfitId);
 
         GarmentDto outerDto = new GarmentDto(outer.getId(), outer.getImgUrl());
         GarmentDto topDto = new GarmentDto(top.getId(), top.getImgUrl());
@@ -42,17 +42,17 @@ public class DetailController {
     }
 
     @PostMapping
-    public void InsertDetail (@RequestPart(value = "detail") InsertDetailDto request,
-                              @RequestPart(value = "detailImg") MultipartFile outfitImg) {
+    public void InsertDetail (@RequestPart InsertDetailDto request,
+                              @RequestPart MultipartFile detailImg) {
 
         Outfit outfit = outfitService.findOne(request.getOutfitId());
 
-        detailService.save(outfitImg, request.getCategory(), outfit);
+        detailService.save(detailImg, request.getCategory(), outfit);
     }
 
     @GetMapping("{outfitId}/{detailId}")
-    public DetailGarmentResponseDto DetailOutfit (@PathVariable("detailId") Long id) {
-        Garment garment = garmentService.findById(id);
+    public DetailGarmentResponseDto DetailOutfit (@PathVariable Long detailId) {
+        Garment garment = garmentService.findById(detailId);
         String imgUrl = garment.getImgUrl();
 
         return new DetailGarmentResponseDto(imgUrl);

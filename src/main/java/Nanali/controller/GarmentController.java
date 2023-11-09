@@ -44,11 +44,11 @@ public class GarmentController {
     }
 
     @PostMapping
-    public void InsertGarment(@RequestPart(value = "garment") InsertGarmentDto request,
-                              @RequestPart(value = "garmentImg") MultipartFile outfitImg) {
+    public void InsertGarment(@RequestPart InsertGarmentDto request,
+                              @RequestPart MultipartFile garmentImg) {
         GarmentWeatherRequest weather = new GarmentWeatherRequest(request.getTemp_from(), request.getTemp_to(), request.getUv_from(),
                 request.getUv_to(), request.getRain_from(), request.getRain_to());
 
-        garmentService.save(outfitImg, request.getCategory(), request.getSex(), weather);
+        garmentService.save(garmentImg, request.getCategory(), request.getSex(), weather);
     }
 }
