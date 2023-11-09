@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OutfitWeatherRequest {
 
-    private Double temp_from;
-    private Double temp_to;
-    private Double uv_from;
-    private Double uv_to;
-    private Double rain_from;
-    private Double rain_to;
+    private Double tempFrom;
+    private Double tempTo;
+    private Double uvFrom;
+    private Double uvTo;
+    private Double rainFrom;
+    private Double rainTo;
 }

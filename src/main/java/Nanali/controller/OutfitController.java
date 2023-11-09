@@ -68,8 +68,8 @@ public class OutfitController {
     @PostMapping
     public void InsertOutfit(@RequestPart InsertOutfitDto request,
                              @RequestPart MultipartFile outfitImg) {
-        OutfitWeatherRequest weather = new OutfitWeatherRequest(request.getTemp_from(), request.getTemp_to(), request.getUv_from(),
-                request.getUv_to(), request.getRain_from(), request.getRain_to());
+        OutfitWeatherRequest weather = new OutfitWeatherRequest(request.getTempFrom(), request.getTempTo(), request.getUvFrom(),
+                request.getUvTo(), request.getRainFrom(), request.getRainTo());
 
         outfitService.save(outfitImg, request.getStyle(), request.getSex(), weather);
     }

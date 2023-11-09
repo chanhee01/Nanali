@@ -33,8 +33,8 @@ public class GarmentService {
         imgName = s3FileName;
         imgUrl = s3Url;
 
-        Garment garment = new Garment(imgName, imgUrl, category, sex, weather.getTemp_from(), weather.getTemp_to(),
-                weather.getUv_from(), weather.getUv_to(), weather.getRain_from(), weather.getRain_to());
+        Garment garment = new Garment(imgName, imgUrl, category, sex, weather.getTempFrom(), weather.getTempTo(),
+                weather.getUvFrom(), weather.getUvTo(), weather.getRainFrom(), weather.getRainTo());
 
         Garment savedGarment = garmentRepository.save(garment);
         return savedGarment;
