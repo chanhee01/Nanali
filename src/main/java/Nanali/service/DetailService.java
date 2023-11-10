@@ -45,22 +45,22 @@ public class DetailService {
     }
 
     public Detail findOuter(Long id) {
-        Detail outer = detailRepository.findOuter(id);
+        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.OUTER);
         return outer;
     }
 
     public Detail findTop(Long id) {
-        Detail outer = detailRepository.findTop(id);
+        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.TOP);
         return outer;
     }
 
     public Detail findPants(Long id) {
-        Detail outer = detailRepository.findPants(id);
+        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.PANTS);
         return outer;
     }
 
     public Detail findShoes(Long id) {
-        Detail outer = detailRepository.findShoes(id);
+        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.SHOES);
         return outer;
     }
 
