@@ -1,11 +1,7 @@
 package Nanali.controller;
 
 import Nanali.domain.cody.cloth.Garment;
-import Nanali.dtos.detail.DetailtResponseDto;
-import Nanali.dtos.garment.GarmentDto;
-import Nanali.dtos.garment.GarmentOneResponseDto;
-import Nanali.dtos.garment.GarmentRequestDto;
-import Nanali.dtos.garment.InsertGarmentDto;
+import Nanali.dtos.garment.*;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.service.GarmentService;
 import lombok.RequiredArgsConstructor;
@@ -23,32 +19,39 @@ public class GarmentController {
     private final GarmentService garmentService;
 
     @GetMapping
-    public Nanali.dtos.garment.GarmentResponseDto Garment(@RequestBody GarmentRequestDto request) {
+    public GarmentResponseDto Garment(@RequestBody GarmentRequestDto request) {
         List<Garment> outers = garmentService.findOuters(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
         List<Garment> tops = garmentService.findTops(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
         List<Garment> pants = garmentService.findPants(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
         List<Garment> shoes = garmentService.findShoes(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
 
+
         List<GarmentDto> outerList = outers.stream()
-                .map(o -> new GarmentDto(o.getId(), o.getImgUrl())).collect(Collectors.toList());
+                .map(o -> GarmentDto.convert(o)).collect(Collectors.toList());
 
         List<GarmentDto> topList = tops.stream()
-                .map(o -> new GarmentDto(o.getId(), o.getImgUrl())).collect(Collectors.toList());
+                .map(t -> GarmentDto.convert(t)).collect(Collectors.toList());
 
         List<GarmentDto> pantsList = pants.stream()
-                .map(o -> new GarmentDto(o.getId(), o.getImgUrl())).collect(Collectors.toList());
+                .map(p -> GarmentDto.convert(p)).collect(Collectors.toList());
 
         List<GarmentDto> shoesList = shoes.stream()
-                .map(o -> new GarmentDto(o.getId(), o.getImgUrl())).collect(Collectors.toList());
+                .map(s -> GarmentDto.convert(s)).collect(Collectors.toList());
 
-        return new Nanali.dtos.garment.GarmentResponseDto(outerList, topList, pantsList, shoesList);
+        return new GarmentResponseDto(outerList, topList, pantsList, shoesList);
     }
 
     @PostMapping
     public void InsertGarment(@RequestPart InsertGarmentDto request,
                               @RequestPart MultipartFile garmentImg) {
-        GarmentWeatherRequest weather = new GarmentWeatherRequest(request.getTempFrom(), request.getTempTo(), request.getUvFrom(),
-                request.getUvTo(), request.getRainFrom(), request.getRainTo());
+
+        GarmentWeatherRequest weather = GarmentWeatherRequest.builder()
+                .tempFrom(request.getTempFrom())
+                .tempTo(request.getTempTo())
+                .uvFrom(request.getUvFrom())
+                .uvTo(request.getUvTo())
+                .rainFrom(request.getRainFrom())
+                .rainTo(request.getRainTo()).build();
 
         garmentService.save(garmentImg, request.getCategory(), request.getSex(), weather);
     }

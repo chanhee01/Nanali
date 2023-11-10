@@ -28,7 +28,8 @@ public class LikeController {
 
         boolean CanLikeStatus = likeOutfitService.validationLikeOutfit(member.getId(), outfitId);
         if (CanLikeStatus == true) {
-            LikeOutfit likeOutfit = new LikeOutfit(member, outfit, LikeStatus.LIKE);
+            LikeOutfit likeOutfit = LikeOutfit.builder()
+                            .member(member).outfit(outfit).likeStatus(LikeStatus.LIKE).build();
             likeOutfitService.save(likeOutfit);
         }
         else {
@@ -50,7 +51,8 @@ public class LikeController {
 
         boolean CanLikeStatus = likeGarmentService.validationLikeGarment(member.getId(), garmentId);
         if (CanLikeStatus == true) {
-            LikeGarment likeGarment = new LikeGarment(member, garment, LikeStatus.LIKE);
+            LikeGarment likeGarment = LikeGarment.builder()
+                            .member(member).garment(garment).likeStatus(LikeStatus.LIKE).build();
             likeGarmentService.save(likeGarment);
         }
         else {

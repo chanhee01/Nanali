@@ -48,7 +48,8 @@ public class MyPageController {
 
         List<OutfitDto> outfits = likeOutfitService.findAllByMember(member);
 
-        LikeOutfitDto outfitDto = new LikeOutfitDto(nickname, email, imgUrl, outfits);
+        LikeOutfitDto outfitDto = LikeOutfitDto.builder()
+                .nickname(nickname).email(email).memberImg(imgUrl).outfits(outfits).build();
         return outfitDto;
     }
 
@@ -76,7 +77,10 @@ public class MyPageController {
         List<GarmentDto> outers = likeGarmentService.findOuters(member);
         List<GarmentDto> shoes = likeGarmentService.findShoes(member);
 
-        LikeGarmentDto garmentDto = new LikeGarmentDto(nickname, email, imgUrl, outers, tops, pants, shoes);
+        LikeGarmentDto garmentDto = LikeGarmentDto.builder()
+                .nickname(nickname).email(email).memberImg(imgUrl)
+                .outers(outers).tops(tops).pants(pants).shoes(shoes).build();
+
         return garmentDto;
     }
 

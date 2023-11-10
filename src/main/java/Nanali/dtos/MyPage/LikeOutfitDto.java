@@ -2,14 +2,14 @@ package Nanali.dtos.MyPage;
 
 import Nanali.dtos.outfit.OutfitDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class LikeOutfitDto {
 
     private String nickname;

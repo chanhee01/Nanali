@@ -40,32 +40,36 @@ public class LikeGarmentService {
     public List<GarmentDto> findTops(Member member) {
         List<LikeGarment> allTop = likeGarmentRepository.findAllLikeTop(member);
 
-        List<GarmentDto> LikeTops = allTop.stream().map(top -> new GarmentDto(top.getGarment().getId(),
-                top.getGarment().getImgUrl())).collect(Collectors.toList());
+        List<GarmentDto> LikeTops = allTop.stream().map(top -> GarmentDto.convert(top.getGarment()))
+                .collect(Collectors.toList());
+
         return LikeTops;
     }
 
     public List<GarmentDto> findPants(Member member) {
         List<LikeGarment> allPants = likeGarmentRepository.findAllLikePants(member);
 
-        List<GarmentDto> LikePants = allPants.stream().map(pant -> new GarmentDto(pant.getGarment().getId(),
-                pant.getGarment().getImgUrl())).collect(Collectors.toList());
+        List<GarmentDto> LikePants = allPants.stream().map(pants -> GarmentDto.convert(pants.getGarment()))
+                .collect(Collectors.toList());
+
         return LikePants;
     }
 
     public List<GarmentDto> findOuters(Member member) {
         List<LikeGarment> allOuter = likeGarmentRepository.findAllLikeOuter(member);
 
-        List<GarmentDto> LikeOuters = allOuter.stream().map(outer -> new GarmentDto(outer.getGarment().getId(),
-                outer.getGarment().getImgUrl())).collect(Collectors.toList());
+        List<GarmentDto> LikeOuters = allOuter.stream().map(outer -> GarmentDto.convert(outer.getGarment()))
+                .collect(Collectors.toList());
+
         return LikeOuters;
     }
 
     public List<GarmentDto> findShoes(Member member) {
         List<LikeGarment> allShoes = likeGarmentRepository.findAllLikeShoes(member);
 
-        List<GarmentDto> LikeShoes = allShoes.stream().map(shoes -> new GarmentDto(shoes.getGarment().getId(),
-                shoes.getGarment().getImgUrl())).collect(Collectors.toList());
+        List<GarmentDto> LikeShoes = allShoes.stream().map(shoes -> GarmentDto.convert(shoes.getGarment()))
+                .collect(Collectors.toList());
+
         return LikeShoes;
     }
 

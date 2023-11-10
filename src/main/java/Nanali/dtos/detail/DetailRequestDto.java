@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class DetailRequestDto {
 
     private String outfit;
-    private GarmentDto outer;
-    private GarmentDto top;
-    private GarmentDto pants;
-    private GarmentDto shoes;
+    private DetailDto outer;
+    private DetailDto top;
+    private DetailDto pants;
+    private DetailDto shoes;
 }

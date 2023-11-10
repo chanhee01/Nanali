@@ -2,9 +2,9 @@ package Nanali.controller;
 
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.detail.Detail;
-import Nanali.dtos.detail.DetailtResponseDto;
+import Nanali.dtos.detail.DetailDto;
+import Nanali.dtos.detail.DetailResponseDto;
 import Nanali.dtos.detail.InsertDetailDto;
-import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.detail.DetailRequestDto;
 import Nanali.service.DetailService;
 import Nanali.service.OutfitService;
@@ -29,10 +29,10 @@ public class DetailController {
         Detail pants = detailService.findPants(outfitId);
         Detail shoes = detailService.findShoes(outfitId);
 
-        GarmentDto outerDto = new GarmentDto(outer.getId(), outer.getImgUrl());
-        GarmentDto topDto = new GarmentDto(top.getId(), top.getImgUrl());
-        GarmentDto pantsDto = new GarmentDto(pants.getId(), pants.getImgUrl());
-        GarmentDto shoesDto = new GarmentDto(shoes.getId(), shoes.getImgUrl());
+        DetailDto outerDto = DetailDto.convert(outer);
+        DetailDto topDto = DetailDto.convert(top);
+        DetailDto pantsDto = DetailDto.convert(pants);
+        DetailDto shoesDto = DetailDto.convert(shoes);
 
         return new DetailRequestDto(outfit.getImgUrl(), outerDto, topDto, pantsDto, shoesDto);
     }
@@ -48,10 +48,10 @@ public class DetailController {
     }
 
     @GetMapping("detail/{detailId}")
-    public DetailtResponseDto DetailOutfit (@PathVariable Long detailId) {
+    public DetailResponseDto DetailOutfit (@PathVariable Long detailId) {
         Detail detail = detailService.findOne(detailId);
         String imgUrl = detail.getImgUrl();
 
-        return new DetailtResponseDto(imgUrl);
+        return new DetailResponseDto(imgUrl);
     }
 }
