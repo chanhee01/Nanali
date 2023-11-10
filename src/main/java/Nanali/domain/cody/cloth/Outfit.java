@@ -5,6 +5,7 @@ import Nanali.domain.BaseEntity;
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.detail.Detail;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -42,6 +43,7 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     @OneToMany(mappedBy = "outfit")
     private List<Detail> details;
 
+    @Builder
     public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double temp_from, Double temp_to,
                   Double uv_from, Double uv_to, Double rain_from, Double rain_to) {
         this.imgName = imgName;

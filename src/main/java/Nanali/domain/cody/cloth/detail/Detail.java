@@ -6,6 +6,7 @@ import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Outfit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,6 +34,7 @@ public class Detail extends BaseEntity { // Outfit으로 추천된 사진의 각
     @JsonIgnore
     private Outfit outfit;
 
+    @Builder
     public Detail(String imgName, String imgUrl, Category category, Outfit outfit) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;

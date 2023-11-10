@@ -5,6 +5,7 @@ import Nanali.domain.Member.Member;
 import Nanali.domain.cody.cloth.Garment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -30,6 +31,7 @@ public class LikeGarment extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private LikeStatus likeStatus;
 
+    @Builder
     public LikeGarment(Member member, Garment garment, LikeStatus likeStatus) {
         this.member = member;
         this.garment = garment;

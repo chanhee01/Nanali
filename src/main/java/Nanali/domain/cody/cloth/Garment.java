@@ -5,6 +5,7 @@ import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
 import Nanali.domain.cody.cloth.detail.Detail;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -39,6 +40,7 @@ public class Garment extends BaseEntity { // Garment는 코디 안의 아이템 
     @OneToMany(mappedBy = "garment")
     private List<LikeGarment> garmentList;
 
+    @Builder
     public Garment(String imgName, String imgUrl, Category category, Sex sex, Double temp_from, Double temp_to,
                    Double uv_from, Double uv_to, Double rain_from, Double rain_to) {
         this.imgName = imgName;

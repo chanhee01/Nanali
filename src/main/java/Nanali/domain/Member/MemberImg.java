@@ -3,6 +3,7 @@ package Nanali.domain.Member;
 import Nanali.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +24,7 @@ public class MemberImg extends BaseEntity {
     @JsonIgnore
     private Member member;
 
+    @Builder
     public MemberImg(String imgName, String imgUrl, Member member) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
