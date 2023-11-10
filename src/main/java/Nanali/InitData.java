@@ -30,9 +30,15 @@ public class InitData {
 
         @Transactional
         public void init() {
-            Member member = new Member("aaa", "bbb", "ccc", "aaa@naver.com", true, 12, Style.CASUAL);
+            Member member = Member.builder()
+                    .loginId("aaa").
+                    password("bbb").
+                    nickname("ccc").
+                    email("ababab@naver.com").
+                    sex(true).
+                    age(12).
+                    style(Style.CASUAL).build();
             em.persist(member);
         }
     }
-
 }

@@ -33,8 +33,17 @@ public class OutfitService {
         imgName = s3FileName;
         imgUrl = s3Url;
 
-        Outfit outfit = new Outfit(imgName, imgUrl, style, sex, weather.getTempFrom(), weather.getTempTo(),
-                weather.getUvFrom(), weather.getUvTo(), weather.getRainFrom(), weather.getRainTo());
+        Outfit outfit = Outfit.builder()
+                .imgName(imgName)
+                .imgUrl(imgUrl)
+                .style(style)
+                .sex(sex)
+                .temp_from(weather.getTempFrom())
+                .temp_to(weather.getTempTo())
+                .uv_from(weather.getUvFrom())
+                .uv_to(weather.getUvTo())
+                .rain_from(weather.getRainFrom())
+                .rain_to(weather.getRainTo()).build();
 
         Outfit savedOutfit = outfitRepository.save(outfit);
 

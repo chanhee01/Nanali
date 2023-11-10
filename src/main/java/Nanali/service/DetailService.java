@@ -31,7 +31,8 @@ public class DetailService {
         imgName = s3FileName;
         imgUrl = s3Url;
 
-        Detail detail = new Detail(imgName, imgUrl, category, outfit);
+        Detail detail = Detail.builder()
+                .imgName(imgName).imgUrl(imgUrl).category(category).outfit(outfit).build();
 
         Detail saved = detailRepository.save(detail);
         return saved.getId();

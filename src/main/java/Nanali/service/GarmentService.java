@@ -2,6 +2,7 @@ package Nanali.service;
 
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
+import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.repository.GarmentRepository;
@@ -33,8 +34,17 @@ public class GarmentService {
         imgName = s3FileName;
         imgUrl = s3Url;
 
-        Garment garment = new Garment(imgName, imgUrl, category, sex, weather.getTempFrom(), weather.getTempTo(),
-                weather.getUvFrom(), weather.getUvTo(), weather.getRainFrom(), weather.getRainTo());
+        Garment garment = Garment.builder()
+                .imgName(imgName)
+                .imgUrl(imgUrl)
+                .category(category)
+                .sex(sex)
+                .temp_from(weather.getTempFrom())
+                .temp_to(weather.getTempTo())
+                .uv_from(weather.getUvFrom())
+                .uv_to(weather.getUvTo())
+                .rain_from(weather.getRainFrom())
+                .rain_to(weather.getRainTo()).build();
 
         Garment savedGarment = garmentRepository.save(garment);
         return savedGarment;

@@ -31,7 +31,8 @@ public class MemberImgService {
         String s3Url = result.get("s3Url");
         imgName = s3FileName;
         imgUrl = s3Url;
-        MemberImg memberImg = new MemberImg(imgName, imgUrl, member);
+        MemberImg memberImg = MemberImg.builder()
+                .imgName(imgName).imgUrl(imgUrl).member(member).build();
 
         MemberImg savedImg = memberImgRepository.save(memberImg);
         return savedImg;
