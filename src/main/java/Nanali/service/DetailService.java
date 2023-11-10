@@ -38,7 +38,8 @@ public class DetailService {
     }
 
     public Detail findOne(Long id) {
-        Detail detail = detailRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        Detail detail = detailRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find detail. id: %s", id)));
         return detail;
     }
 

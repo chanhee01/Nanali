@@ -41,7 +41,8 @@ public class GarmentService {
     }
 
     public Garment findById(Long id) {
-        return garmentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        return garmentRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find garment. id: %s", id)));
     }
 
     public List<Garment> findOuters(Double temp, Double uv, Double rain, Sex sex) {

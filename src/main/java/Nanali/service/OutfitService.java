@@ -51,7 +51,8 @@ public class OutfitService {
     }
 
     public Outfit findOne(Long id) {
-        Outfit find = outfitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        Outfit find = outfitRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find Outfit. id: %s", id)));
         return find;
     }
 }

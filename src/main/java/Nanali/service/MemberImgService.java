@@ -38,13 +38,15 @@ public class MemberImgService {
     }
 
     public MemberImg findMemberImg(Member member) {
-        MemberImg memberImg = memberImgRepository.findById(member.getId()).orElseThrow(() -> new IllegalArgumentException());
+        MemberImg memberImg = memberImgRepository.findById(member.getId()).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find %s member image.", member.getId())));
 
         return memberImg;
     }
 
     public MemberImg findById(Long id) {
-        MemberImg memberImg = memberImgRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        MemberImg memberImg = memberImgRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find member image. id: %s", id)));
         return memberImg;
     }
 

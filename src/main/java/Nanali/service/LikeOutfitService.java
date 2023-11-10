@@ -27,7 +27,8 @@ public class LikeOutfitService {
     }
 
     public LikeOutfit findOne(Long id) {
-        return likeOutfitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        return likeOutfitRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException(String.format("failed to find likeOutfit. id: %s", id)));
     }
 
     public List<OutfitDto> findAllByMember(Member member) {

@@ -25,7 +25,7 @@ public class MemberService {
 
     public Member findById(Long id) {
         return memberRepository.findById(id).
-            orElseThrow(() -> new IllegalArgumentException());
+            orElseThrow(() -> new IllegalArgumentException(String.format("failed to find member. id: %s", id)));
     }
 
     @Transactional
