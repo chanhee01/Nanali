@@ -6,6 +6,7 @@ import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class GarmentServiceTest {
 
     @DisplayName("카테고리별 날씨에 맞는 아이템 추출")
     @Test
+    @Transactional
     public void findGarment() {
         Member member = new Member("loginId", "password", "nickname", "email", true, 20, Style.CASUAL);
         memberService.save(member);
