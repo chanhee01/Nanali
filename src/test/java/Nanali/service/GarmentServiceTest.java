@@ -33,12 +33,18 @@ public class GarmentServiceTest {
         byte[] fileContent = "Test file content".getBytes();
         MultipartFile multipartFile = new MockMultipartFile("testfile.txt", "testfile.txt", "text/plain", fileContent);
 
-        GarmentWeatherRequest garmentWeatherRequest1 = new GarmentWeatherRequest(0D, 10D, 0D, 1D, 0D, 30D);
-        GarmentWeatherRequest garmentWeatherRequest2 = new GarmentWeatherRequest(10D, 20D, 0D, 1D, 0D, 50D);
-        GarmentWeatherRequest garmentWeatherRequest3 = new GarmentWeatherRequest(10D, 25D, 0D, 2D, 20D, 100D);
-        GarmentWeatherRequest garmentWeatherRequest4 = new GarmentWeatherRequest(10D, 20D, 0D, 3D, 70D, 100D);
-        GarmentWeatherRequest garmentWeatherRequest5 = new GarmentWeatherRequest(10D, 14D, 0D, 3D, 80D, 100D);
-        GarmentWeatherRequest garmentWeatherRequest6 = new GarmentWeatherRequest(15D, 20D, 0D, 2D, 0D, 50D);
+        GarmentWeatherRequest garmentWeatherRequest1 = GarmentWeatherRequest.builder()
+                .tempFrom(0D).tempTo(10D).uvFrom(0D).uvTo(1D).rainFrom(0D).rainTo(30D).build();
+        GarmentWeatherRequest garmentWeatherRequest2 = GarmentWeatherRequest.builder()
+                .tempFrom(10D).tempTo(20D).uvFrom(0D).uvTo(1D).rainFrom(0D).rainTo(50D).build();
+        GarmentWeatherRequest garmentWeatherRequest3 = GarmentWeatherRequest.builder()
+                .tempFrom(10D).tempTo(25D).uvFrom(0D).uvTo(2D).rainFrom(20D).rainTo(100D).build();
+        GarmentWeatherRequest garmentWeatherRequest4 = GarmentWeatherRequest.builder()
+                .tempFrom(10D).tempTo(20D).uvFrom(0D).uvTo(3D).rainFrom(70D).rainTo(100D).build();
+        GarmentWeatherRequest garmentWeatherRequest5 = GarmentWeatherRequest.builder()
+                .tempFrom(10D).tempTo(15D).uvFrom(0D).uvTo(3D).rainFrom(80D).rainTo(100D).build();
+        GarmentWeatherRequest garmentWeatherRequest6 = GarmentWeatherRequest.builder()
+                .tempFrom(15D).tempTo(20D).uvFrom(0D).uvTo(2D).rainFrom(0D).rainTo(50D).build();
 
         garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest1);
         garmentService.save(multipartFile, Category.TOP, Sex.BOTH, garmentWeatherRequest2);

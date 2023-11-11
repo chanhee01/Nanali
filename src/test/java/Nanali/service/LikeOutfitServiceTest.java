@@ -7,6 +7,7 @@ import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.outfit.OutfitDto;
+import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.dtos.weather.OutfitWeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +38,20 @@ class LikeOutfitServiceTest {
         byte[] fileContent = "Test file content".getBytes();
         MultipartFile multipartFile = new MockMultipartFile("testfile.txt", "testfile.txt", "text/plain", fileContent);
 
-        OutfitWeatherRequest outfitWeatherRequest1 = new OutfitWeatherRequest(0D, 10D, 0D, 1D, 0D, 30D);
-        OutfitWeatherRequest outfitWeatherRequest2 = new OutfitWeatherRequest(10D, 20D, 0D, 1D, 0D, 50D);
-        OutfitWeatherRequest outfitWeatherRequest3 = new OutfitWeatherRequest(10D, 25D, 0D, 2D, 20D, 100D);
-        OutfitWeatherRequest outfitWeatherRequest4 = new OutfitWeatherRequest(10D, 20D, 0D, 3D, 70D, 100D);
-        OutfitWeatherRequest outfitWeatherRequest5 = new OutfitWeatherRequest(10D, 14D, 0D, 3D, 80D, 100D);
-        OutfitWeatherRequest outfitWeatherRequest6 = new OutfitWeatherRequest(15D, 20D, 0D, 2D, 0D, 50D);
-        OutfitWeatherRequest outfitWeatherRequest7 = new OutfitWeatherRequest(15D, 20D, 0D, 2D, 0D, 30D);
+        OutfitWeatherRequest outfitWeatherRequest1 = OutfitWeatherRequest.builder()
+                .tempFrom(0D).tempTo(10D).uvFrom(0D).uvTo(1D).rainFrom(0D).rainTo(30D).build();
+        OutfitWeatherRequest outfitWeatherRequest2 = OutfitWeatherRequest.builder()
+                .tempFrom(10D).tempTo(20D).uvFrom(0D).uvTo(1D).rainFrom(0D).rainTo(50D).build();
+        OutfitWeatherRequest outfitWeatherRequest3 = OutfitWeatherRequest.builder()
+                .tempFrom(10D).tempTo(25D).uvFrom(0D).uvTo(2D).rainFrom(20D).rainTo(100D).build();
+        OutfitWeatherRequest outfitWeatherRequest4 = OutfitWeatherRequest.builder()
+                .tempFrom(10D).tempTo(20D).uvFrom(0D).uvTo(3D).rainFrom(70D).rainTo(100D).build();
+        OutfitWeatherRequest outfitWeatherRequest5 = OutfitWeatherRequest.builder()
+                .tempFrom(10D).tempTo(15D).uvFrom(0D).uvTo(3D).rainFrom(80D).rainTo(100D).build();
+        OutfitWeatherRequest outfitWeatherRequest6 = OutfitWeatherRequest.builder()
+                .tempFrom(15D).tempTo(20D).uvFrom(0D).uvTo(2D).rainFrom(0D).rainTo(50D).build();
+        OutfitWeatherRequest outfitWeatherRequest7 = OutfitWeatherRequest.builder()
+                .tempFrom(15D).tempTo(20D).uvFrom(0D).uvTo(2D).rainFrom(0D).rainTo(50D).build();
 
         Outfit outfit1 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest1);
         Outfit outfit2 = outfitService.save(multipartFile, Style.CASUAL, Sex.BOTH, outfitWeatherRequest2);
@@ -85,7 +93,6 @@ class LikeOutfitServiceTest {
 
         List<OutfitDto> allByMember2 = likeOutfitService.findAllByMember(member);
 
-        // 6, 7만 떠야함
 
         for (OutfitDto outfit : allByMember2) {
             System.out.println("likeOutfit = " + outfit);
@@ -98,7 +105,6 @@ class LikeOutfitServiceTest {
 
         List<OutfitDto> allByMember3 = likeOutfitService.findAllByMember(member);
 
-        // 1, 2, 6, 7만 떠야함
 
         for (OutfitDto outfit : allByMember3) {
             System.out.println("likeOutfit = " + outfit);
