@@ -11,6 +11,7 @@ import Nanali.dtos.weather.OutfitWeatherRequest;
 import Nanali.service.MemberService;
 import Nanali.service.OutfitService;
 import Nanali.service.WeatherService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class OutfitController {
     private final MemberService memberService;
 
     @GetMapping
-    public OutfitResponseDto Outfit(@RequestBody OutfitRequestDto request) throws Exception {
+    public OutfitResponseDto Outfit(@Valid @RequestBody OutfitRequestDto request) throws Exception {
         LocalDateTime time = request.getTime();
         ResponseEntity<Map<String, Map<String, Double>>> weather = weatherService.weather(time);
 
@@ -65,7 +66,7 @@ public class OutfitController {
     }
 
     @PostMapping
-    public void InsertOutfit(@RequestPart InsertOutfitDto request,
+    public void InsertOutfit(@Valid @RequestPart InsertOutfitDto request,
                              @RequestPart MultipartFile outfitImg) {
 
         OutfitWeatherRequest weather = OutfitWeatherRequest.builder()

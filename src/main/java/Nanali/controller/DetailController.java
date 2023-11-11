@@ -8,6 +8,8 @@ import Nanali.dtos.detail.InsertDetailDto;
 import Nanali.dtos.detail.DetailRequestDto;
 import Nanali.service.DetailService;
 import Nanali.service.OutfitService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,7 +41,7 @@ public class DetailController {
     }
 
     @PostMapping
-    public void InsertDetail (@RequestPart InsertDetailDto request,
+    public void InsertDetail (@Valid @RequestPart InsertDetailDto request,
                               @RequestPart MultipartFile detailImg) {
 
         Outfit outfit = outfitService.findOne(request.getOutfitId());

@@ -11,6 +11,7 @@ import Nanali.service.LikeGarmentService;
 import Nanali.service.LikeOutfitService;
 import Nanali.service.MemberImgService;
 import Nanali.service.MemberService;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -88,19 +89,19 @@ public class MyPageController {
     // 로그인 시 세션 넣고 인증도 넣어야할듯
 
     @PatchMapping("/change/nickname")
-    public void changeNickname(@RequestBody String nickname) {
+    public void changeNickname(@RequestBody @NotBlank String nickname) {
         Member member = memberService.findById(1L);
         memberService.changeNickname(member, nickname);
     }
 
     @PatchMapping("/change/style")
-    public void changeStyle(@RequestBody Style style) {
+    public void changeStyle(@RequestBody @NotBlank Style style) {
         Member member = memberService.findById(1L);
         memberService.changeStyle(member, style);
     }
 
     @PatchMapping("/change/password")
-    public void changePassword(@RequestBody String password) {
+    public void changePassword(@RequestBody @NotBlank String password) {
         Member member = memberService.findById(1L);
         memberService.changePassword(member, password);
     }

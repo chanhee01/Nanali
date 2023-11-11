@@ -4,6 +4,8 @@ import Nanali.domain.cody.cloth.Garment;
 import Nanali.dtos.garment.*;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.service.GarmentService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +22,7 @@ public class GarmentController {
     private final GarmentService garmentService;
 
     @GetMapping
-    public GarmentResponseDto Garment(@RequestBody GarmentRequestDto request) {
+    public GarmentResponseDto Garment(@Valid @RequestBody GarmentRequestDto request) {
         List<Garment> outers = garmentService.findOuters(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
         List<Garment> tops = garmentService.findTops(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
         List<Garment> pants = garmentService.findPants(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
@@ -43,7 +45,7 @@ public class GarmentController {
     }
 
     @PostMapping
-    public void InsertGarment(@RequestPart InsertGarmentDto request,
+    public void InsertGarment(@Valid @RequestPart InsertGarmentDto request,
                               @RequestPart MultipartFile garmentImg) {
 
         GarmentWeatherRequest weather = GarmentWeatherRequest.builder()
