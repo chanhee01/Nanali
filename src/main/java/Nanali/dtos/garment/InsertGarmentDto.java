@@ -3,6 +3,7 @@ package Nanali.dtos.garment;
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Sex;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,28 +14,28 @@ import org.hibernate.validator.constraints.Range;
 @AllArgsConstructor
 public class InsertGarmentDto {
 
-    @NotBlank
+    @NotNull
     private Category category;
 
-    @NotBlank
+    @NotNull
     private Sex sex;
 
-    @NotBlank
+    @NotNull
     @Range(min = -10, max = 30)
     private Double tempFrom;
-    @NotBlank
+    @NotNull
     @Range(min = -10, max = 30)
     private Double tempTo;
-    @NotBlank
+    @NotNull
     @Range(min = 0, max = 2)
     private Double uvFrom;
-    @NotBlank
+    @NotNull
     @Range(min = 0, max = 2)
     private Double uvTo;
-    @NotBlank
+    @NotNull
     @Range(min = 0, max = 100)
     private Double rainFrom;
-    @NotBlank
+    @NotNull
     @Range(min = 0, max = 100)
     private Double rainTo;
 

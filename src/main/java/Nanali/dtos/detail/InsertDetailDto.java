@@ -2,6 +2,7 @@ package Nanali.dtos.detail;
 
 import Nanali.domain.cody.Category;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InsertDetailDto {
 
-    @NotBlank
+    @NotNull
     private Category category;
 
-    @NotBlank
+    @NotNull
     private Long outfitId;
 }

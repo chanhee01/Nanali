@@ -12,6 +12,7 @@ import Nanali.service.LikeOutfitService;
 import Nanali.service.MemberImgService;
 import Nanali.service.MemberService;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -95,7 +96,7 @@ public class MyPageController {
     }
 
     @PatchMapping("/change/style")
-    public void changeStyle(@RequestBody @NotBlank Style style) {
+    public void changeStyle(@RequestBody @NotNull Style style) {
         Member member = memberService.findById(1L);
         memberService.changeStyle(member, style);
     }
