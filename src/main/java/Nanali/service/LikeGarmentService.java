@@ -33,10 +33,6 @@ public class LikeGarmentService {
                 () -> new IllegalArgumentException(String.format("failed to find likeGarment. id: %s", id)));
     }
 
-    public List<LikeGarment> findAllByMember(Member member) {
-        return likeGarmentRepository.findAllByMember(member);
-    }
-
     public List<GarmentDto> findTops(Member member) {
         List<LikeGarment> allTop = likeGarmentRepository.findAllLikeTop(member);
 
@@ -92,12 +88,6 @@ public class LikeGarmentService {
     }
 
     public boolean validationLikeGarment(Long memberId, Long garmentId) {
-        List<LikeGarment> likeGarments = likeGarmentRepository.findOneByMember(memberId, garmentId);
-        if (likeGarments.isEmpty()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return likeGarmentRepository.findOneByMember(memberId, garmentId) != null;
     }
 }

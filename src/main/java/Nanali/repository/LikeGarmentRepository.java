@@ -13,8 +13,6 @@ import java.util.List;
 
 public interface LikeGarmentRepository extends JpaRepository<LikeGarment, Long> {
 
-    List<LikeGarment> findAllByMember(Member member);
-
     @Query("select l from LikeGarment l join l.garment g where g.category = 'OUTER' and l.member = :member " +
             "and l.likeStatus = 'LIKE'")
     List<LikeGarment> findAllLikeOuter(@Param(value = "member") Member member);
@@ -33,7 +31,7 @@ public interface LikeGarmentRepository extends JpaRepository<LikeGarment, Long> 
 
     @Query("select l from LikeGarment l join l.member m join l.garment g where " +
             "m.id = :memberId and g.id = :garmentId")
-    List<LikeGarment> findOneByMember(@Param(value = "memberId") Long memberId,
+    LikeGarment findOneByMember(@Param(value = "memberId") Long memberId,
                                      @Param(value = "garmentId") Long garmentId);
 
     @Query("select l from LikeGarment l join l.member m join l.garment g where " +

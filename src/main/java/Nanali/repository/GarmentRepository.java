@@ -43,5 +43,5 @@ public interface GarmentRepository extends JpaRepository<Garment, Long> {
     List<Garment> findAllByCategoryIsShoes(@Param(value = "temp") Double temp, @Param(value = "uv") Double uv,
                                            @Param(value = "rain") Double rain, @Param(value = "sex") Sex sex);
 
-    Optional<Garment> findById(long id);
+    Optional<Garment> findById(Long id);
 }

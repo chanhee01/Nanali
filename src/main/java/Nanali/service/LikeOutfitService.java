@@ -60,12 +60,6 @@ public class LikeOutfitService {
     }
 
     public boolean validationLikeOutfit(Long memberId, Long outfitId) {
-        List<LikeOutfit> likeOutfit = likeOutfitRepository.findOneByMember(memberId, outfitId);
-        if (likeOutfit.isEmpty()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return likeOutfitRepository.findOneByMember(memberId, outfitId) != null;
     }
 }
