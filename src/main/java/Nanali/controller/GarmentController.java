@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/garment")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class GarmentController {
 
     private final GarmentService garmentService;
@@ -56,7 +57,7 @@ public class GarmentController {
         garmentService.save(garmentImg, request.getCategory(), request.getSex(), weather);
     }
 
-    @GetMapping("garment/{garmentId}")
+    @GetMapping("/garment/{garmentId}")
     public GarmentOneResponseDto garmentOne (@PathVariable Long detailId) {
         Garment garment = garmentService.findById(detailId);
         String imgUrl = garment.getImgUrl();

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/detail")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class DetailController {
 
     private final OutfitService outfitService;
@@ -36,7 +37,6 @@ public class DetailController {
 
         return new DetailRequestDto(outfit.getImgUrl(), outerDto, topDto, pantsDto, shoesDto);
     }
-    // 여기도 detail id를 하나하나 넣어줘야함
 
     @PostMapping
     public void InsertDetail (@RequestPart InsertDetailDto request,
@@ -47,7 +47,7 @@ public class DetailController {
         detailService.save(detailImg, request.getCategory(), outfit);
     }
 
-    @GetMapping("detail/{detailId}")
+    @GetMapping("/detail/{detailId}")
     public DetailResponseDto DetailOutfit (@PathVariable Long detailId) {
         Detail detail = detailService.findOne(detailId);
         String imgUrl = detail.getImgUrl();

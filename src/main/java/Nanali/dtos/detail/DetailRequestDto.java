@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DetailRequestDto {
 
-    private String outfit;
+    private String outfitImg;
     private DetailDto outer;
     private DetailDto top;
     private DetailDto pants;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/like")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class LikeController {
 
     private final MemberService memberService;

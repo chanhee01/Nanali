@@ -22,6 +22,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/outfit")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class OutfitController {
 
     private final OutfitService outfitService;
@@ -56,8 +57,6 @@ public class OutfitController {
         double temperature = currentWeather.get("temperature");
         double precipitation = currentWeather.get("precipitation");
         double uvIndex = currentWeather.get("uv_index");
-
-        System.out.println("sex :" + sex + "style :" + style);
 
         Outfit outfit = outfitService.findOutfit(temperature, precipitation, uvIndex, style, sex);
         String imgUrl = outfit.getImgUrl();
