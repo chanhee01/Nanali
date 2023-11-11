@@ -32,7 +32,7 @@ public class LikeOutfitService {
     }
 
     public List<OutfitDto> findAllByMember(Member member) {
-        List<LikeOutfit> allByMember = likeOutfitRepository.findAllByMember(member.getId());
+        List<LikeOutfit> allByMember = likeOutfitRepository.findAllByMemberAndLikeStatusIsLike(member, LikeStatus.LIKE);
 
         List<OutfitDto> LikeOutfits = allByMember.stream()
                 .map(outfit -> new OutfitDto(outfit.getOutfit().getId(),
