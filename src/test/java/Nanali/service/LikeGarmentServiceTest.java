@@ -9,6 +9,7 @@ import Nanali.domain.cody.cloth.Garment;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.weather.GarmentWeatherRequest;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +31,7 @@ public class LikeGarmentServiceTest {
     GarmentService garmentService;
 
     @Test
+    @Transactional
     public void likeOutfitTest() {
         Member member = new Member("loginId", "password", "nickname", "email", true, 20, Style.CASUAL);
         memberService.save(member);

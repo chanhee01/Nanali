@@ -7,8 +7,8 @@ import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.outfit.OutfitDto;
-import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.dtos.weather.OutfitWeatherRequest;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +30,7 @@ class LikeOutfitServiceTest {
     OutfitService outfitService;
 
     @Test
+    @Transactional
     public void likeOutfitTest() {
         Member member = new Member("loginId", "password", "nickname", "email", true, 20, Style.CASUAL);
         memberService.save(member);

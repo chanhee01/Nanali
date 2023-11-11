@@ -5,6 +5,7 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.OutfitWeatherRequest;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ class OutfitServiceTest {
 
     @DisplayName("날씨에 해당하는 outfit 사진 랜덤으로 하나 추출")
     @Test
+    @Transactional
     public void findOutfit() {
         Member member = new Member("loginId", "password", "nickname", "email", true, 20, Style.CASUAL);
         memberService.save(member);
