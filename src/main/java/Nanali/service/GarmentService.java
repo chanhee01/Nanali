@@ -2,10 +2,9 @@ package Nanali.service;
 
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Garment;
-import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.GarmentWeatherRequest;
-import Nanali.repository.GarmentRepository;
+import Nanali.repository.garment.GarmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,12 +38,12 @@ public class GarmentService {
                 .imgUrl(imgUrl)
                 .category(category)
                 .sex(sex)
-                .temp_from(weather.getTempFrom())
-                .temp_to(weather.getTempTo())
-                .uv_from(weather.getUvFrom())
-                .uv_to(weather.getUvTo())
-                .rain_from(weather.getRainFrom())
-                .rain_to(weather.getRainTo()).build();
+                .tempFrom(weather.getTempFrom())
+                .tempTo(weather.getTempTo())
+                .uvFrom(weather.getUvFrom())
+                .uvTo(weather.getUvTo())
+                .rainFrom(weather.getRainFrom())
+                .rainTo(weather.getRainTo()).build();
 
         Garment savedGarment = garmentRepository.save(garment);
         return savedGarment;

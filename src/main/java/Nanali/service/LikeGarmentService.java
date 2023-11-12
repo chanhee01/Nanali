@@ -2,12 +2,10 @@ package Nanali.service;
 
 import Nanali.domain.Member.Member;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
-import Nanali.domain.cody.LikeClothes.LikeOutfit;
 import Nanali.domain.cody.LikeClothes.LikeStatus;
 import Nanali.domain.cody.cloth.Garment;
-import Nanali.domain.cody.cloth.Outfit;
 import Nanali.dtos.garment.GarmentDto;
-import Nanali.repository.LikeGarmentRepository;
+import Nanali.repository.likeGarment.LikeGarmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,7 +81,7 @@ public class LikeGarmentService {
 
     @Transactional
     public void deleteLikeGarment(Member member, Garment garment) {
-        LikeGarment likeGarment = likeGarmentRepository.findOneByMemberAndGarment(member.getId(), garment.getId());
+        LikeGarment likeGarment = likeGarmentRepository.findOneByMember(member.getId(), garment.getId());
         likeGarmentRepository.deleteById(likeGarment.getId());
     }
 

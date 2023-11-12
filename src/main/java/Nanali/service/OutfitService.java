@@ -4,7 +4,7 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.weather.OutfitWeatherRequest;
-import Nanali.repository.OutfitRepository;
+import Nanali.repository.outfit.OutfitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,12 +38,12 @@ public class OutfitService {
                 .imgUrl(imgUrl)
                 .style(style)
                 .sex(sex)
-                .temp_from(weather.getTempFrom())
-                .temp_to(weather.getTempTo())
-                .uv_from(weather.getUvFrom())
-                .uv_to(weather.getUvTo())
-                .rain_from(weather.getRainFrom())
-                .rain_to(weather.getRainTo()).build();
+                .tempFrom(weather.getTempFrom())
+                .tempTo(weather.getTempTo())
+                .uvFrom(weather.getUvFrom())
+                .uvTo(weather.getUvTo())
+                .rainFrom(weather.getRainFrom())
+                .rainTo(weather.getRainTo()).build();
 
         Outfit savedOutfit = outfitRepository.save(outfit);
 
