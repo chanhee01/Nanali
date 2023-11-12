@@ -12,14 +12,13 @@ import java.util.Optional;
 
 public interface OutfitRepository extends JpaRepository<Outfit, Long> {
 
-    @Query("select o from Outfit o where o.temp_from <= :temp and o.temp_to >= :temp and o.uv_from <= :uv " +
-            "and o.uv_to >= :uv and o.rain_from <= :rain and o.rain_to >= : rain and o.style = :style " +
-            "and o.sex = :sex or o.temp_from <= :temp and o.temp_to >= :temp and o.uv_from <= :uv " +
-            "and o.uv_to >= :uv and o.rain_from <= :rain and o.rain_to >= : rain and o.style = :style " +
+    @Query("select o from Outfit o where o.tempFrom <= :temp and o.tempTo >= :temp and o.uvFrom <= :uv " +
+            "and o.uvTo >= :uv and o.rainFrom <= :rain and o.rainTo >= : rain and o.style = :style " +
+            "and o.sex = :sex or o.tempFrom <= :temp and o.tempTo >= :temp and o.uvFrom <= :uv " +
+            "and o.uvTo >= :uv and o.rainFrom <= :rain and o.rainTo >= : rain and o.style = :style " +
             "and o.sex = 'BOTH'")
     List<Outfit> findAllOutifs(@Param(value = "temp") Double temp, @Param(value = "uv") Double uv,
                                @Param(value = "rain") Double rain, @Param(value = "style") Style style, @Param(value = "sex") Sex sex);
-    // Style 타입으로 수정 필요
 
     Optional<Outfit> findById(Long id);
 }

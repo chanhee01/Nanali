@@ -30,12 +30,12 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    private Double temp_from;
-    private Double temp_to;
-    private Double uv_from;
-    private Double uv_to;
-    private Double rain_from;
-    private Double rain_to;
+    private Double tempFrom;
+    private Double tempTo;
+    private Double uvFrom;
+    private Double uvTo;
+    private Double rainFrom;
+    private Double rainTo;
 
     @OneToMany(mappedBy = "outfit")
     private List<LikeOutfit> outfitList;
@@ -44,18 +44,18 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     private List<Detail> details;
 
     @Builder
-    public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double temp_from, Double temp_to,
-                  Double uv_from, Double uv_to, Double rain_from, Double rain_to) {
+    public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double tempFrom, Double tempTo,
+                  Double uvFrom, Double uvTo, Double rainFrom, Double rainTo) {
         this.imgName = imgName;
         this.imgUrl = imgUrl;
         this.style = style;
         this.sex = sex;
-        this.temp_from = temp_from;
-        this.temp_to = temp_to;
-        this.uv_from = uv_from;
-        this.uv_to = uv_to;
-        this.rain_from = rain_from;
-        this.rain_to = rain_to;
+        this.tempFrom = tempFrom;
+        this.tempTo = tempTo;
+        this.uvFrom = uvFrom;
+        this.uvTo = uvTo;
+        this.rainFrom = rainFrom;
+        this.rainTo = rainTo;
     }
 
     // 연관관계 메서드
