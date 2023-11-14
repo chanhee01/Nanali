@@ -3,12 +3,13 @@ package Nanali.controller;
 import Nanali.domain.Member.Member;
 import Nanali.dtos.login.LoginRequest;
 import Nanali.dtos.login.MemberSaveDto;
+import Nanali.dtos.login.validationIdRequest;
+import Nanali.dtos.login.validationNicknameRequest;
 import Nanali.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import java.util.Hashtable;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class LoginController {
 
-    private MemberService memberService;
+    private final MemberService memberService;
     public Hashtable sessionList = new Hashtable();
 
     @PostMapping("/save")
@@ -44,16 +45,18 @@ public class LoginController {
             bindingResult.reject("save has error", null);
         }
 
-        Member member = Member.builder()
-                .loginId(request.getLoginId())
-                .password(request.getPassword())
-                .nickname(request.getNickname())
-                .email(request.getEmail())
-                .sex(request.getSex())
-                .age(request.getAge())
-                .style(request.getStyle()).build();
+        if(!bindingResult.hasErrors()) {
+            Member member = Member.builder()
+                    .loginId(request.getLoginId())
+                    .password(request.getPassword())
+                    .nickname(request.getNickname())
+                    .email(request.getEmail())
+                    .sex(request.getSex())
+                    .age(request.getAge())
+                    .style(request.getStyle()).build();
 
-        memberService.save(member);
+            memberService.save(member);
+        }
     }
 
     @PostMapping("/login")
@@ -91,4 +94,14 @@ public class LoginController {
             session.invalidate();
         }
     }
+
+    @PostMapping("/validation/id")
+    public boolean validationId(@RequestBody validationIdRequest request) {
+        return !memberService.checkLoginIdDuplicate(request.getLoginId());
+    } // false면 이미 있는거고 true면 없는 것 (true면 회원가입 가능)
+
+    @PostMapping("/validation/nickname")
+    public boolean validationNickname(@RequestBody validationNicknameRequest request) {
+        return !memberService.checkNicknameDuplicate(request.getNickname());
+    } // false면 이미 있는거고 true면 없는 것 (true면 회원가입 가능)
 }
