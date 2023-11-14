@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,10 +39,10 @@ public class Outfit extends BaseEntity { // Outfit은 코디 사진
     private Double rainTo;
 
     @OneToMany(mappedBy = "outfit")
-    private List<LikeOutfit> outfitList;
+    private List<LikeOutfit> outfitList = new ArrayList<>();
 
     @OneToMany(mappedBy = "outfit")
-    private List<Detail> details;
+    private List<Detail> details = new ArrayList<>();
 
     @Builder
     public Outfit(String imgName, String imgUrl, Style style, Sex sex, Double tempFrom, Double tempTo,

@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,10 +35,10 @@ public class Member extends BaseEntity {
     private Style style; // Style 타입으로 수정 필요
 
     @OneToMany(mappedBy = "member")
-    private List<LikeGarment> garmentList;
+    private List<LikeGarment> garmentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
-    private List<LikeOutfit> outfitList;
+    private List<LikeOutfit> outfitList = new ArrayList<>();
 
     @OneToOne(mappedBy = "member")
     private MemberImg memberImg;

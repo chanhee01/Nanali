@@ -3,12 +3,12 @@ package Nanali.domain.cody.cloth;
 import Nanali.domain.BaseEntity;
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.LikeClothes.LikeGarment;
-import Nanali.domain.cody.cloth.detail.Detail;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,7 +38,7 @@ public class Garment extends BaseEntity { // Garment는 코디 안의 아이템 
     private Double rainTo;
 
     @OneToMany(mappedBy = "garment")
-    private List<LikeGarment> garmentList;
+    private List<LikeGarment> garmentList = new ArrayList<>();
 
     @Builder
     public Garment(String imgName, String imgUrl, Category category, Sex sex, Double tempFrom, Double tempTo,

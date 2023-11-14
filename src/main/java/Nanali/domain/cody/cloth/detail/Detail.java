@@ -1,7 +1,6 @@
 package Nanali.domain.cody.cloth.detail;
 
 import Nanali.domain.BaseEntity;
-import Nanali.domain.cody.cloth.Garment;
 import Nanali.domain.cody.Category;
 import Nanali.domain.cody.cloth.Outfit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,8 +28,8 @@ public class Detail extends BaseEntity { // Outfit으로 추천된 사진의 각
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "garment_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "outfit_id")
     @JsonIgnore
     private Outfit outfit;
 
