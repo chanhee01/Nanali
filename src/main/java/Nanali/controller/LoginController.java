@@ -6,6 +6,7 @@ import Nanali.dtos.login.MemberSaveDto;
 import Nanali.dtos.login.validationIdRequest;
 import Nanali.dtos.login.validationNicknameRequest;
 import Nanali.service.MemberService;
+import Nanali.service.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -79,7 +80,7 @@ public class LoginController {
         httpServletRequest.getSession().invalidate();
         HttpSession session = httpServletRequest.getSession(true);  // Session이 없으면 생성
         // 세션에 userId를 넣어줌
-        session.setAttribute("userId", member.getId());
+        session.setAttribute(SessionConst.LOGIN_MEMBER, member);
         session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
 
         sessionList.put(session.getId(), session);
