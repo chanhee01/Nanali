@@ -7,10 +7,8 @@ import Nanali.dtos.MyPage.LikeGarmentDto;
 import Nanali.dtos.MyPage.LikeOutfitDto;
 import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.outfit.OutfitDto;
-import Nanali.service.LikeGarmentService;
-import Nanali.service.LikeOutfitService;
-import Nanali.service.MemberImgService;
-import Nanali.service.MemberService;
+import Nanali.service.*;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -29,10 +27,11 @@ public class MyPageController {
     private final LikeGarmentService likeGarmentService;
     private final LikeOutfitService likeOutfitService;
     private final MemberImgService memberImgService;
+    private final HttpSession session;
 
     @GetMapping("/outfit")
     public LikeOutfitDto outfit() {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         String nickname = member.getNickname();
         String email = member.getEmail();
 
@@ -58,7 +57,7 @@ public class MyPageController {
 
     @GetMapping("/garment")
     public LikeGarmentDto garment() {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         String nickname = member.getNickname();
         String email = member.getEmail();
 
@@ -87,29 +86,29 @@ public class MyPageController {
         return garmentDto;
     }
 
-    // 로그인 시 세션 넣고 인증도 넣어야할듯
-
     @PatchMapping("/change/nickname")
     public void changeNickname(@RequestBody @NotBlank String nickname) {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+        System.out.println("id = " + member.getId());
+
         memberService.changeNickname(member, nickname);
     }
 
     @PatchMapping("/change/style")
     public void changeStyle(@RequestBody @NotNull Style style) {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         memberService.changeStyle(member, style);
     }
 
     @PatchMapping("/change/password")
     public void changePassword(@RequestBody @NotBlank String password) {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         memberService.changePassword(member, password);
     }
 
     @PatchMapping("/memberImg")
     public void changeMemberImg(@RequestPart MultipartFile memberImg) {
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
 
         MemberImg image = memberImgService.findMemberImg(member);
         if(image != null) {
