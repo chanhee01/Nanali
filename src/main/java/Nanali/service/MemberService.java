@@ -51,16 +51,6 @@ public class MemberService {
         return member;
     }
 
-    public Member getLoginUserById(Long memberId) {
-        if(memberId == null) return null;
-
-        Optional<Member> optionalMember = memberRepository.findById(memberId);
-        if(optionalMember.isEmpty()) return null;
-
-        return optionalMember.get();
-    }
-
-
     public Member findById(Long id) {
         return memberRepository.findById(id).
             orElseThrow(() -> new IllegalArgumentException(String.format("failed to find member. id: %s", id)));
@@ -69,7 +59,7 @@ public class MemberService {
     @Transactional
     public void changeNickname(Member member, String nickname) {
         Member findMember = findById(member.getId());
-        if (validationNickname(nickname) == true) {
+        if (!checkNicknameDuplicate(nickname)) {
             findMember.changeNickname(nickname);
         }
     }
@@ -89,5 +79,4 @@ public class MemberService {
     public boolean validationNickname(String nickname) {
         return memberRepository.findByNickname(nickname) != null;
     }
-
 }
