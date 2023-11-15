@@ -2,6 +2,7 @@ package Nanali.dtos.garment;
 
 import Nanali.domain.cody.cloth.Sex;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,6 @@ public class GarmentRequestDto {
     @Range(min = 0, max = 100)
     private Double rain;
 
-    @NotBlank
+    @NotNull
     private Sex sex;
 }

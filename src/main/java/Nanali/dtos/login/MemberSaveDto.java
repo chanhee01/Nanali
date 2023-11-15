@@ -4,6 +4,7 @@ import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,11 +34,11 @@ public class MemberSaveDto {
     @NotBlank(message = "email이 비어있습니다.")
     private String email;
 
-    @NotEmpty
+    @NotNull
     private Boolean sex;
-    @NotEmpty
+    @NotNull
     private Integer age;
-    @NotEmpty
+    @NotNull
     private Style style;
 
     public Member toEntity() {
