@@ -1,12 +1,15 @@
 package Nanali.controller;
 
 import Nanali.domain.cody.cloth.Garment;
+import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.garment.*;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import Nanali.service.GarmentService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,12 +25,12 @@ public class GarmentController {
     private final GarmentService garmentService;
 
     @GetMapping
-    public GarmentResponseDto Garment(@Valid @RequestBody GarmentRequestDto request) {
-        List<Garment> outers = garmentService.findOuters(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
-        List<Garment> tops = garmentService.findTops(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
-        List<Garment> pants = garmentService.findPants(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
-        List<Garment> shoes = garmentService.findShoes(request.getTemp(), request.getUv(), request.getRain(), request.getSex());
-
+    public GarmentResponseDto Garment(@RequestParam Double temp, @RequestParam Double uv,
+                                      @RequestParam Double rain, @RequestParam Sex sex) {
+        List<Garment> outers = garmentService.findOuters(temp, uv, rain, sex);
+        List<Garment> tops = garmentService.findTops(temp, uv, rain, sex);
+        List<Garment> pants = garmentService.findPants(temp, uv, rain, sex);
+        List<Garment> shoes = garmentService.findShoes(temp, uv, rain, sex);
 
         List<GarmentDto> outerList = outers.stream()
                 .map(o -> GarmentDto.convert(o)).collect(Collectors.toList());

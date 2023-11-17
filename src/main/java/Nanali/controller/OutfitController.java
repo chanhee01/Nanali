@@ -5,15 +5,18 @@ import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
 import Nanali.domain.cody.cloth.Sex;
 import Nanali.dtos.outfit.InsertOutfitDto;
-import Nanali.dtos.outfit.OutfitRequestDto;
 import Nanali.dtos.outfit.OutfitResponseDto;
 import Nanali.dtos.weather.OutfitWeatherRequest;
 import Nanali.service.MemberService;
 import Nanali.service.OutfitService;
+import Nanali.service.SessionConst;
 import Nanali.service.WeatherService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,32 +31,31 @@ public class OutfitController {
 
     private final OutfitService outfitService;
     private final WeatherService weatherService;
-    private final MemberService memberService;
+    private final HttpSession session;
 
     @GetMapping
-    public OutfitResponseDto Outfit(@Valid @RequestBody OutfitRequestDto request) throws Exception {
-        LocalDateTime time = request.getTime();
+    public OutfitResponseDto Outfit(@Nullable @RequestParam Style style, @Nullable @RequestParam Sex sex,
+                                    @NotNull @RequestParam LocalDateTime time) throws Exception {
+
         ResponseEntity<Map<String, Map<String, Double>>> weather = weatherService.weather(time);
 
-        Member member = memberService.findById(1L);
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
 
-        Style style;
-        Sex sex = Sex.BOTH;
 
-        if (request.getStyle() == null) {
+        if (style == null) {
             style = member.getStyle();
         } else {
-            style = request.getStyle();
+            style = style;
         }
 
-        if (request.getSex() == null) {
+        if (sex == null) {
             if(member.isSex()) sex = Sex.MAN;
             else if(!member.isSex()) sex = Sex.WOMAN;
         } else {
-            sex = request.getSex();
+            sex = sex;
         }
 
-        Map<String, Double> currentWeather = weatherService.getCurrentWeather(weather.getBody(), request.getTime());
+        Map<String, Double> currentWeather = weatherService.getCurrentWeather(weather.getBody(), time);
 
         double temperature = currentWeather.get("temperature");
         double precipitation = currentWeather.get("precipitation");
@@ -66,7 +68,7 @@ public class OutfitController {
     }
 
     @PostMapping
-    public void InsertOutfit(@Valid @RequestPart InsertOutfitDto request,
+    public Long InsertOutfit(@Valid @RequestPart InsertOutfitDto request,
                              @RequestPart MultipartFile outfitImg) {
 
         OutfitWeatherRequest weather = OutfitWeatherRequest.builder()
@@ -77,6 +79,7 @@ public class OutfitController {
                 .rainFrom(request.getRainFrom())
                 .rainTo(request.getRainTo()).build();
 
-        outfitService.save(outfitImg, request.getStyle(), request.getSex(), weather);
+        Outfit save = outfitService.save(outfitImg, request.getStyle(), request.getSex(), weather);
+        return save.getId();
     }
 }
