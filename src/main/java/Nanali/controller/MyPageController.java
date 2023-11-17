@@ -89,7 +89,6 @@ public class MyPageController {
     @PatchMapping("/change/nickname")
     public void changeNickname(@RequestBody @NotBlank String nickname) {
         Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
-        System.out.println("id = " + member.getId());
 
         memberService.changeNickname(member, nickname);
     }

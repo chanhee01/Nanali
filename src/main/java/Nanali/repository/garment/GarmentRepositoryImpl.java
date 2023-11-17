@@ -20,14 +20,15 @@ public class GarmentRepositoryImpl implements GarmentRepositoryCustom {
 
     @Override
     public List<Garment> findAllByCategoryIsOuter(Double temp, Double uv, Double rain, Sex sex) {
+
         return queryFactory
                 .selectFrom(garment)
                 .where(garment.tempFrom.loe(temp).and(garment.tempTo.goe(temp))
-                        .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                        .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                         .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                         .and(garment.category.eq(Category.valueOf("OUTER"))).and(garment.sex.eq(sex))
                         .or((garment.tempFrom.loe(temp)).and((garment.tempTo.goe(temp))
-                                .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                                .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                                 .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                                 .and(garment.category.eq(Category.valueOf("OUTER")))
                                 .and(garment.sex.eq(Sex.valueOf("BOTH"))))))
@@ -39,11 +40,11 @@ public class GarmentRepositoryImpl implements GarmentRepositoryCustom {
         return queryFactory
                 .selectFrom(garment)
                 .where(garment.tempFrom.loe(temp).and(garment.tempTo.goe(temp))
-                        .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                        .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                         .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                         .and(garment.category.eq(Category.valueOf("TOP"))).and(garment.sex.eq(sex))
                         .or((garment.tempFrom.loe(temp)).and((garment.tempTo.goe(temp))
-                                .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                                .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                                 .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                                 .and(garment.category.eq(Category.valueOf("TOP")))
                                 .and(garment.sex.eq(Sex.valueOf("BOTH"))))))
@@ -55,11 +56,11 @@ public class GarmentRepositoryImpl implements GarmentRepositoryCustom {
         return queryFactory
                 .selectFrom(garment)
                 .where(garment.tempFrom.loe(temp).and(garment.tempTo.goe(temp))
-                        .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                        .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                         .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                         .and(garment.category.eq(Category.valueOf("PANTS"))).and(garment.sex.eq(sex))
                         .or((garment.tempFrom.loe(temp)).and((garment.tempTo.goe(temp))
-                                .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                                .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                                 .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                                 .and(garment.category.eq(Category.valueOf("PANTS")))
                                 .and(garment.sex.eq(Sex.valueOf("BOTH"))))))
@@ -71,11 +72,11 @@ public class GarmentRepositoryImpl implements GarmentRepositoryCustom {
         return queryFactory
                 .selectFrom(garment)
                 .where(garment.tempFrom.loe(temp).and(garment.tempTo.goe(temp))
-                        .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                        .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                         .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                         .and(garment.category.eq(Category.valueOf("SHOES"))).and(garment.sex.eq(sex))
                         .or((garment.tempFrom.loe(temp)).and((garment.tempTo.goe(temp))
-                                .and(garment.uvFrom.loe(uv)).and(garment.uvFrom.goe(uv))
+                                .and(garment.uvFrom.loe(uv)).and(garment.uvTo.goe(uv))
                                 .and(garment.rainFrom.loe(rain)).and(garment.rainTo.goe(rain))
                                 .and(garment.category.eq(Category.valueOf("SHOES")))
                                 .and(garment.sex.eq(Sex.valueOf("BOTH"))))))

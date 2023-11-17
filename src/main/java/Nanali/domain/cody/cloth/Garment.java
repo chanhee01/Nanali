@@ -16,8 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Garment extends BaseEntity { // Garment는 코디 안의 아이템 하나 하나를 지칭
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String imgName;

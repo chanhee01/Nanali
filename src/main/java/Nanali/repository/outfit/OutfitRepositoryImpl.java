@@ -24,11 +24,11 @@ public class OutfitRepositoryImpl implements OutfitRepositoryCustom {
         return queryFactory
                 .selectFrom(outfit)
                 .where(outfit.tempFrom.loe(temp).and(outfit.tempTo.goe(temp))
-                        .and(outfit.uvFrom.loe(uv)).and(outfit.uvFrom.goe(uv))
+                        .and(outfit.uvFrom.loe(uv)).and(outfit.uvTo.goe(uv))
                         .and(outfit.rainFrom.loe(rain)).and(outfit.rainTo.goe(rain))
                         .and(outfit.style.eq(style)).and(outfit.sex.eq(sex))
                             .or(outfit.tempFrom.loe(temp).and(outfit.tempTo.goe(temp))
-                            .and(outfit.uvFrom.loe(uv)).and(outfit.uvFrom.goe(uv))
+                            .and(outfit.uvFrom.loe(uv)).and(outfit.uvTo.goe(uv))
                             .and(outfit.rainFrom.loe(rain)).and(outfit.rainTo.goe(rain))
                             .and(outfit.style.eq(style)).and(outfit.sex.eq(Sex.valueOf("BOTH")))))
                 .fetch();

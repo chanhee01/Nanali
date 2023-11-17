@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class HomeController {
+public class HomeController { // 서버 켜져있는지 확인용 컨트롤러
 
     @GetMapping("/")
     public String home() {

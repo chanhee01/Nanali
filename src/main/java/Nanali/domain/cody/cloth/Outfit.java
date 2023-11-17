@@ -17,8 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String imgName;

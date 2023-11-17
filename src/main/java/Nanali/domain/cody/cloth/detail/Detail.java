@@ -17,8 +17,7 @@ public class Detail extends BaseEntity { // Outfit으로 추천된 사진의 각
     // Outfit과 연관관계를 맺는다고 가정을 한다면 FK에 null 값이 너무 많이 들어갈 것이라 생각되고
     // 코디 페이지에서 크롤링된 상품이랑 개별 상품 페이지에서 크롤링된 상품의 차이점도 있을 것이라 예상되어서 Detail 엔티티를 만듦
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String imgName;

@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Member extends BaseEntity {
 
-    @Id @GeneratedValue
+    @Id  @GeneratedValue
     private Long id;
 
     private String loginId;

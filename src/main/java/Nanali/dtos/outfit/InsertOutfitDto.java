@@ -25,7 +25,7 @@ public class InsertOutfitDto {
     private Double tempFrom;
 
     @NotNull
-    @Range(min = -10, max = 20)
+    @Range(min = -10, max = 30)
     private Double tempTo;
 
     @NotNull
