@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ec2-user/nanali
+REPOSITORY=/home/ubuntu
 cd $REPOSITORY
 
 APP_NAME=Nanali
