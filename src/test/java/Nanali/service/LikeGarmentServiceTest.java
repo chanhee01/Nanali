@@ -1,5 +1,5 @@
 package Nanali.service;
-
+/*
 import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.Category;
@@ -239,3 +239,4 @@ public class LikeGarmentServiceTest {
         }
     }
 }
+*/

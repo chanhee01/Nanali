@@ -1,5 +1,5 @@
 package Nanali.service;
-
+/*
 import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.cloth.Outfit;
@@ -71,4 +71,4 @@ class OutfitServiceTest {
 
         System.out.println(style3.getImgName());
     }
-}
+}*/

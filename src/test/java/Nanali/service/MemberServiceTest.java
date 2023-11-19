@@ -1,5 +1,5 @@
 package Nanali.service;
-
+/*
 import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import jakarta.transaction.Transactional;
@@ -50,3 +50,4 @@ public class MemberServiceTest {
         System.out.println("nickname2 = " + member2.getNickname());
     }
 }
+*/

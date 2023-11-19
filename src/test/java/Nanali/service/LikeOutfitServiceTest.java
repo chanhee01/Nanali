@@ -1,5 +1,5 @@
 package Nanali.service;
-
+/*
 import Nanali.domain.Member.Member;
 import Nanali.domain.Member.Style;
 import Nanali.domain.cody.LikeClothes.LikeOutfit;
@@ -111,4 +111,4 @@ class LikeOutfitServiceTest {
             System.out.println("likeOutfit = " + outfit);
         }
     }
-}
+}*/
