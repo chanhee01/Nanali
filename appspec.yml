@@ -3,10 +3,10 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ec2-user
+    destination: /home/ec2-user/nanali
 
 permissions:
-  - object: /home/ec2-user/
+  - object: /home/ec2-user/nanali
     owner: ec2-user
     group: ec2-user
 

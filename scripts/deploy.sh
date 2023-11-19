@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ec2-user
+REPOSITORY=/home/ec2-user/nanali
 cd $REPOSITORY
 
-APP_NAME=/home/ec2-user/build/libs/Nanali-0.0.1-SNAPSHOT.jar
+APP_NAME=Nanali
 JAR_NAME=$(ls $REPOSITORY/build/libs/ | grep 'SNAPSHOT.jar' | tail -n 1)
 JAR_PATH=$REPOSITORY/build/libs/$JAR_NAME
 
