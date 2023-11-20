@@ -12,6 +12,6 @@ public class HomeController { // 서버 켜져있는지 확인용 컨트롤러
 
     @GetMapping("/")
     public String home() {
-        return "ok";
+        return "배포 완료";
     }
 }
