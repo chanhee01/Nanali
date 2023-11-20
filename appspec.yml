@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ec2-user/nanali
+    destination: /home/ubuntu/nanali
 
 permissions:
   - object: /home/ubuntu/
@@ -14,4 +14,4 @@ hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       timeout: 60
-      runas: ec2-user
+      runas: ubuntu
