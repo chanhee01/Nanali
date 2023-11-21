@@ -15,6 +15,9 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(indexes = {
+        @Index(name = "outfit_index", columnList = "tempFrom, tempTo, uvFrom, uvTo, rainFrom, rainTo, style, sex,")
+})
 public class Outfit extends BaseEntity { // Outfit은 코디 사진
 
     @Id @GeneratedValue
