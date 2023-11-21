@@ -32,7 +32,10 @@ public class DetailController {
         Detail pants = detailService.findPants(outfitId);
         Detail shoes = detailService.findShoes(outfitId);
 
-        DetailDto outerDto = DetailDto.convert(outer);
+        DetailDto outerDto;
+
+        if(outer == null) outerDto = null;
+        else outerDto = DetailDto.convert(outer);
         DetailDto topDto = DetailDto.convert(top);
         DetailDto pantsDto = DetailDto.convert(pants);
         DetailDto shoesDto = DetailDto.convert(shoes);

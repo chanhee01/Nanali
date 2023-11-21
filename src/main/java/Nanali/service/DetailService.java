@@ -45,23 +45,28 @@ public class DetailService {
     }
 
     public Detail findOuter(Long id) {
-        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.OUTER);
+        Detail outer;
+        try {
+        outer = detailRepository.findByOutfitIdAndCategory(id, Category.OUTER);
+        } catch (NullPointerException e) {
+            outer = null;
+        }
         return outer;
     }
 
     public Detail findTop(Long id) {
-        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.TOP);
-        return outer;
+        Detail top = detailRepository.findByOutfitIdAndCategory(id, Category.TOP);
+        return top;
     }
 
     public Detail findPants(Long id) {
-        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.PANTS);
-        return outer;
+        Detail pants = detailRepository.findByOutfitIdAndCategory(id, Category.PANTS);
+        return pants;
     }
 
     public Detail findShoes(Long id) {
-        Detail outer = detailRepository.findByOutfitIdAndCategory(id, Category.SHOES);
-        return outer;
+        Detail shoes = detailRepository.findByOutfitIdAndCategory(id, Category.SHOES);
+        return shoes;
     }
 
 }
