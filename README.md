@@ -17,11 +17,14 @@
 - 협업 도구 : git, github, notion
 
 #### **ER 다이어그램**
-<img width="1000" alt="플로우차트" src="https://github.com/chanhee01/Nanali/assets/102280807/ea59c99d-09b9-4f1b-9370-e4bcbe09b080">
+<img width="1000" alt="ER 다이어그램" src="https://github.com/chanhee01/Nanali/assets/102280807/0f50ca13-9a60-40b4-8d04-a40c5b56421e">
+
+
 
 #### **서비스 소개 사진**
 ###### **로그인 및 회원가입**
-<img width="224" alt="로그인 및 회원가입" src="https://github.com/chanhee01/Nanali/assets/102280807/ef776494-bef0-4f35-94e1-daabd0070dc0">
+<img width="224" alt="회원가입" src="https://github.com/chanhee01/Nanali/assets/102280807/ad2b955a-e268-4431-acb9-ec114c55b5e6">
+<img width="224" alt="로그인" src="https://github.com/chanhee01/Nanali/assets/102280807/ad359c43-e774-42cf-8264-4441e4bb4cbb">
 <br>
 <hr>
 
@@ -38,7 +41,7 @@
 <br>
 <hr>
 
-###### **마이페이지**
+###### **마이페이지 - 코디 저장, 옷 저**
 <img width="224" alt="코디 저장" src="https://github.com/chanhee01/Nanali/assets/102280807/7b65b3cd-14ff-4f7b-b1e3-846967838119">
 <img width="224" alt="옷 저장" src="https://github.com/chanhee01/Nanali/assets/102280807/f1040399-baef-47e3-8613-d3bf26f3ad66">
 <br>
