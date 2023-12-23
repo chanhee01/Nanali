@@ -41,7 +41,7 @@
 <br>
 <hr>
 
-###### **마이페이지 - 코디 저장, 옷 저**
+###### **마이페이지 - 코디 저장, 옷 저장**
 <img width="224" alt="코디 저장" src="https://github.com/chanhee01/Nanali/assets/102280807/7b65b3cd-14ff-4f7b-b1e3-846967838119">
 <img width="224" alt="옷 저장" src="https://github.com/chanhee01/Nanali/assets/102280807/f1040399-baef-47e3-8613-d3bf26f3ad66">
 <br>
