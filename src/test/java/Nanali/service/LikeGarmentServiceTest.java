@@ -1,12 +1,12 @@
 package Nanali.service;
 /*
-import Nanali.domain.Member.Member;
-import Nanali.domain.Member.Style;
-import Nanali.domain.cody.Category;
-import Nanali.domain.cody.LikeClothes.LikeGarment;
-import Nanali.domain.cody.LikeClothes.LikeStatus;
-import Nanali.domain.cody.cloth.Garment;
-import Nanali.domain.cody.cloth.Sex;
+import Nanali.domain.Member.model.Member;
+import Nanali.domain.Member.model.Style;
+import Nanali.global.base.Category;
+import Nanali.domain.like.model.LikeGarment;
+import Nanali.domain.like.model.LikeStatus;
+import Nanali.domain.garment.model.Garment;
+import Nanali.global.base.Sex;
 import Nanali.dtos.garment.GarmentDto;
 import Nanali.dtos.weather.GarmentWeatherRequest;
 import jakarta.transaction.Transactional;

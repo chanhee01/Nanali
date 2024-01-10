@@ -1,7 +1,7 @@
 package Nanali.service;
 /*
-import Nanali.domain.Member.Member;
-import Nanali.domain.Member.Style;
+import Nanali.domain.Member.model.Member;
+import Nanali.domain.Member.model.Style;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
