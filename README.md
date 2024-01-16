@@ -7,21 +7,21 @@
 > 나날이는 날씨에 따라 옷을 추천해주는 서비스이다. 실시간 날씨에 따른 옷 추천, 사용자가 입력한 날씨에 따른 옷 추천 기능이 대표 기능이다.
 
 #### **프로젝트 설명 및 수상 내역**
-- 프로젝트 기간 : 2023년 9월 10일 ~ 11월 20일 (현재 배포 종료 상태)
+- 프로젝트 개발 및 배포 기간 : 2023년 9월 10일 ~ 11월 20일
 - 역할 : 팀장 - 백엔드 개발
-- 수상 : GDSC INHA PROJECT MARATHON 우수상 수상 (인하대학교 SW중심대학사업단장상)
+- 수상 : GDSC INHA PROJECT MARATHON 우수상 (인하대학교 SW중심대학사업단장상)
 - 주최 : Google Developer Student Clubs 인하대학교
 
 #### **백엔드 주요 적용 기술**
 
 - 개발 언어 : Java
 - 개발 도구 : IntelliJ IDEA, Postman
-- 주요 기술 : Spring boot, Spring Data JPA, mysql
+- 주요 기술 : Spring boot, Spring Data JPA, querydsl, mysql
 - 배포 기술 : AWS EC2, S3, RDS, codedeploy, github action
-- 협업 도구 : git, github, notion
+- 협업 도구 : git, github
 
 #### **ER 다이어그램**
-<img width="1000" alt="ER 다이어그램" src="https://github.com/chanhee01/Nanali/assets/102280807/0f50ca13-9a60-40b4-8d04-a40c5b56421e">
+<img width="500" alt="ER 다이어그램" src="https://github.com/chanhee01/Nanali/assets/102280807/0f50ca13-9a60-40b4-8d04-a40c5b56421e">
 
 
 
