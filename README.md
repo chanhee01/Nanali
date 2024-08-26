@@ -9,8 +9,8 @@
 #### **프로젝트 설명 및 수상 내역**
 - 프로젝트 개발 및 배포 기간 : 2023년 9월 10일 ~ 11월 20일
 - 역할 : 팀장 - 백엔드 개발
-- 수상 : GDSC INHA PROJECT MARATHON 우수상 (인하대학교 SW중심대학사업단장상)
-- 주최 : Google Developer Student Clubs 인하대학교
+- 수상 : GDSC PROJECT MARATHON 우수상
+- 주최 : Google Developer Student Clubs
 
 #### **백엔드 주요 적용 기술**
 
