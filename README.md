@@ -1,5 +1,4 @@
 **날씨에 따른 옷 추천 서비스 - 나날이**
-<img width="1000" alt="플로우차트" src="https://github.com/chanhee01/Nanali/assets/102280807/e38888ad-0277-483e-b9e8-03463af59171">
 
 
 #### **서비스 소개**
